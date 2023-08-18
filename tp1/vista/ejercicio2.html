@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/estilos.css">
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <form name="horas" method="get" action="../control/verhoras.php" onsubmit="return validar();">
+            <h3>Ingrese las horas que cursa Prog. Dinamica cada dia</h3>
+            <ul>
+                <li>
+                    <label for="lunes" name="lunes">
+                        Lunes:
+                    </label>
+                    <input type="number" id="lunes" name="lunes">
+                </li>
+                <li>
+                    <label for="martes" name="martes">
+                        Martes:                
+                    </label>
+                    <input type="number" id="martes" name="martes">
+                </li>
+                <li>
+                    <label for="miercoles" name="miercoles">
+                        Miercoles:
+                    </label>
+                    <input type="number" id="miercoles" name="miercoles">
+                </li>
+                <li>
+                    <label for="jueves" name="jueves">
+                        Jueves:
+                    </label>
+                    <input type="number" id="jueves" name="jueves">
+                </li>
+                <li>
+                    <label for="viernes" name="viernes">
+                        Viernes:
+                    </label>
+                    <input type="number" id="viernes" name="viernes">
+                </li>
+            </ul>
+            <input type="submit" value="Enviar">
+        </form>
+    </body>
+    <script type="text/javascript">
+
+        function validar(){
+             const dias = ["lunes","martes","miercoles","jueves","viernes"]
+             let resp = true
+                         
+            dias.forEach((d)=>{   
+                const dia = parseInt(document.getElementById(d).value)
+                const validacion = isNaN(dia)
+                if(validacion){
+                    resp = false;
+                    alert(`Hay un valor no válido ingresado en dia ${d}`)
+                }
+            })
+            return resp; 
+        }
+    </script>
+</html>
