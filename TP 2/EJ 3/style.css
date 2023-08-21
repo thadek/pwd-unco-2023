@@ -1,0 +1,46 @@
+.blueBody {
+    background: #0575E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+.greenBody {
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position: relative;
+    top: 200px;
+}
+
+.redBody {
+    background: #870000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #190A05, #870000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #190A05, #870000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position: relative;
+    top: 200px;
+}
+
+p {
+    color: #ff0000;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    left: 38px;
+}
+
+.cusLabel {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin: 40px 0 40px;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 600;
+}
