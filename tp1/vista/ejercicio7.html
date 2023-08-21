@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            ejercicio 7
+        </title>
+    </head>
+    <body>
+        <form id="ingresoNum" method="post" action="operar.php" onsubmit="return validar()">
+            <div class="numeros">
+                <label for="numero">Ingrese un numero: </label>
+                <input type="text" name="num1" id="num1">
+                <br>
+                <label for="numero">Ingrese otro numero: </label>
+                <input type="text" name="num2" id="num2">
+            </div>
+            <div class="operaciones">
+                <select name="operaciones" >
+                    <option value=""></option>
+                    <option value="suma">Sumar</option>
+                    <option value="resta">Restar</option>
+                    <option value="multiplicar">Multiplicar</option>
+                </select>
+            </div>
+            <input type="submit" id="boton" value="Siguiente">
+        </form>
+    </body>
+    <script type="text/javascript">
+        
+        function validar(){
+
+            let resp = true
+       
+            const num1 = parseInt(document.getElementById('num1'));
+            const num2 = parseInt(document.getElementById('num2'));
+
+            if(isNaN(num1) || isNaN(num2)){
+                alert('Ingrese un numero valido');
+
+                document.getElementById('num1').value = "";
+                document.getElementById('num2').value = "";
+
+                resp = false;
+            }
+            return resp;
+        }
+    </script>
+</html>
