@@ -1,17 +1,25 @@
 body{
     background: #121212;
+    background: linear-gradient(100deg, rgb(15, 248, 190), rgb(52, 52, 238));
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
+    margin: 0;
 }
 
 .contenedor{
+    position: relative;
+    left: 35%;
     display:flex;
     justify-content: center;
     align-items: center;
     border: solid 1px #fff;
     border-radius: 5px;
     padding: 10px;
+    background-color: #1212122f;
+    margin-top: 20px;
+    height: 150px;
+    width: 400px;
 }
 
 .menu{
@@ -20,6 +28,7 @@ body{
     justify-content: center;
     align-items: center;
     padding: 10px;
+    margin: 0;
 
 }
 
@@ -37,4 +46,76 @@ body{
 .menu a:hover{
     color: #076b07;
     transition: 0.2s;
+}
+
+.upperbar{
+    background-color: rgb(24, 23, 23);
+    margin: 0; 
+    position: relative;
+}
+
+.enviar{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.479);
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    width: 95px;
+    left: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    display: block;
+    background-color: #053f0c;
+    color: #fff;
+    
+}
+
+#f_num{
+    border-radius: 5px;
+    border: none;
+
+}
+
+label{
+    font-weight: 600;
+}
+
+.contenedor2{
+    border-radius: 5px;
+    position: relative;
+    width: 550px;
+    left: 32%;
+    background-color: #1212122f;
+    border: solid 1px #fff;
+    margin-top: 20px;
+}
+
+.contenido{
+    position: relative;
+    left: 120px;
+        
+}
+
+.contenido h3{
+    position: relative;
+    right: 75px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.labels{
+    position: relative;
+    right: 30px;
+}
+
+.dias{
+    margin-top: -15px;
+    left: 100px;
+    position: absolute;
+    display: flex;
+    border: none;
+    border-radius: 5px;
+    
 }

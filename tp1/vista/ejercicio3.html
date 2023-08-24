@@ -4,13 +4,13 @@
         <title>
 
         </title>
-        <link rel="stylesheet" type="text/css" href="estilos.css">
+        <link rel="stylesheet" href=".\css\estilos.css">
     </head>
 
     <!--estan los incisos de los otros ejercicios tambien (4, 5 y 6)-->
 
     <body>
-        <form name="presentacion" id="miFormulario" method="get" action="presentacion.php" onSubmit="return validar();">
+        <form name="presentacion" id="miFormulario" method="get" action="../control/presentacion.php" onSubmit="return validar();">
             <ul>
                 <li>
                     <label for="nombre" name="nombre">
@@ -43,7 +43,7 @@
 
                 <ul>
                     <li>
-                        <input type="radio" id="opcion1" name="nivelEstudio" value="No tiene estudios" required placeholder = "Seleccione una opcion">
+                        <input type="radio" id="opcion1" name="nivelEstudio" value="No tiene estudios" required>
                         <label for="opcion1">No tiene estudios</label>
                     </li>
                     <li>
@@ -60,7 +60,7 @@
 
             <div class="sexo">
                 <label for="sexo">Indique su sexo: </label>
-                <input type="radio" id="F" name="sexo" value="Femenino" required placeholder="Debe seleccionar una opcion">
+                <input type="radio" id="F" name="sexo" value="Femenino" required>
                 <label for="opcion3">Femenino</label>
     
                 <input type="radio" id="M" name="sexo" value="Masculino">

@@ -8,28 +8,23 @@
 </head>
 <body>
     <!--Formulario que envia el numero a vernumero.php-->
-   <nav class="navegacion">
-    <!--banner-->
-    <div class="banner">
-        <img src=".\img\banner.jpg" alt="banner">
+    <div class="upperbar">
+        <nav class="navegacion">
+                <ul class="menu">
+                    <li><a href="ejercicio1.html">Ejercicio 1</a></li>
+                    <li><a href="ejercicio2.html">Ejercicio 2</a></li>
+                    <li><a href="ejercicio3.html">Ejercicio 3, 4, 5 y 6</a></li>
+                    <li><a href="ejercicio7.html">Ejercicio 7</a></li>
+                    <li><a href="ejercicio8.html">Ejercicio 8</a></li>
+                  
+                </ul>
+           </nav>
     </div>
-        <ul class="menu">
-            <li><a href="ejercicio1.html">Ejercicio 1</a></li>
-            <li><a href="ejercicio2.html">Ejercicio 2</a></li>
-            <li><a href="ejercicio3.html">Ejercicio 3</a></li>
-            <li><a href="ejercicio4.html">Ejercicio 4</a></li>
-            <li><a href="ejercicio5.html">Ejercicio 5</a></li>
-            <li><a href="ejercicio6.html">Ejercicio 6</a></li>
-            <li><a href="ejercicio7.html">Ejercicio 7</a></li>
-            <li><a href="ejercicio8.html">Ejercicio 8</a></li>
-          
-        </ul>
-   </nav>
     <section class="contenedor">
         <form action="..\control\vernumero.php" method="post">
-            <label for="numero">Ingrese un numero</label>
+            <label class="labels" for="numero">Ingrese un numero</label>
             <input type="number" name="f_num" id="f_num" required>
-            <input type="submit" value="Enviar">
+            <input type="submit" class="enviar" value="Enviar">
         </form>
     </section>
    
