@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <link rel="stylesheet" href="css/estilos.css">
+        <title>Ejercicio 2 - PWD - TP1 </title>
+    </head>
+    <body>
+        <div id="navbar"></div>
+
+        <section class="contenedor columna">
+
+            <section class="consigna">
+                <h3>Ejercicio 2 - Consigna</h3>
+                <p>
+                    Crear una página php que contenga un formulario HTML que permita ingresar las horas
+                    de cursada, de la materia Programación Web Dinámica, por cada día de la semana.
+                    Enviar los datos del formulario por el método Get a otra página php que los reciba y
+                    complete un array unidimensional. Visualizar por pantalla la cantidad total de horas que
+                    se cursan por semana.
+                </p>
+            </section>
+
+            <h3>Resolución</h3>
+
+        <form name="horas" method="get" action="../control/verhoras.php" onsubmit="return validar();">
+            <h3>Ingrese las horas que cursa Prog. Dinamica cada dia</h3>
+            <ul>
+                <li>
+                    <label for="lunes" name="lunes">
+                        Lunes:
+                    </label>
+                    <input type="number" id="lunes" name="lunes">
+                </li>
+                <li>
+                    <label for="martes" name="martes">
+                        Martes:                
+                    </label>
+                    <input type="number" id="martes" name="martes">
+                </li>
+                <li>
+                    <label for="miercoles" name="miercoles">
+                        Miercoles:
+                    </label>
+                    <input type="number" id="miercoles" name="miercoles">
+                </li>
+                <li>
+                    <label for="jueves" name="jueves">
+                        Jueves:
+                    </label>
+                    <input type="number" id="jueves" name="jueves">
+                </li>
+                <li>
+                    <label for="viernes" name="viernes">
+                        Viernes:
+                    </label>
+                    <input type="number" id="viernes" name="viernes">
+                </li>
+            </ul>
+            <input type="submit" class="boton" value="Enviar">
+        </form>
+
+        </section>
+    </body>
+    <script src="/tp1/vista/js/navegacion.js"></script>
+    <script type="text/javascript">
+
+        function validar(){
+             const dias = ["lunes","martes","miercoles","jueves","viernes"]
+             let resp = true
+             let i = 0;
+             while(i < dias.length && resp){
+
+                const dia = parseInt(document.getElementById(dias[i]).value)
+                const validacion = isNaN(dia)
+                if(validacion){
+                    resp = false;
+                    alert(`Hay un valor no válido ingresado en dia ${dias[i]}`)
+                }
+              i++;
+             }
+            return resp; 
+        }
+    </script>
+</html>
