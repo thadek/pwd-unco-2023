@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Subir y Mostrar Archivo de Texto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Subir y Mostrar Archivo de Texto</h1>
+        <form action="procesos.php" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="archivo" class="form-label">Seleccionar archivo de texto (.txt)</label>
+                <input class="form-control" type="file" id="archivo" name="archivo" accept=".txt" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Mostrar Contenido</button>
+        </form>
+    </div>
+</body>
+</html>

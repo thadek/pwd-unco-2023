@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Subir Archivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script>
+        function validarArchivo() {
+            var archivoInput = document.getElementById('archivo');
+            var archivo = archivoInput.files[0];
+            
+            // Verificamos si se ha seleccionado un archivo
+            if (!archivo) {
+                alert('Por favor, seleccione un archivo.');
+                return false;
+            }
+            
+            // Verificamos la extensión del archivo
+            var extension = archivo.name.split('.').pop().toLowerCase();
+            if (extension !== 'doc' && extension !== 'pdf') {
+                alert('La extensión del archivo no es válida. Solo se permiten archivos .doc o .pdf.');
+                return false;
+            }
+            
+            // Verificamos el tamaño del archivo (2MB máximo)
+            if (archivo.size > 2 * 1024 * 1024) {
+                alert('El archivo es demasiado grande. El tamaño máximo permitido es de 2MB.');
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Subir Archivo</h1>
+        <form action="procesos.php" method="POST" enctype="multipart/form-data" onsubmit="return validarArchivo();">
+            <div class="mb-3">
+                <label for="archivo" class="form-label">Seleccionar archivo (solo .doc o .pdf)</label>
+                <input class="form-control" type="file" id="archivo" name="archivo" accept=".doc, .pdf" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Subir Archivo</button>
+        </form>
+    </div>
+</body>
+</html>
