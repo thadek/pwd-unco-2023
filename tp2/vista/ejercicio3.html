@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejercicio 3</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/tp2/vista/css/ej3.css">
 </head>
 <body class="blueBody">
     <div class="container col-sm-12 col-md-3 col-lg-3 col-xl-3 mb-4" >
-        <form class="form-control mt-4" method="post" action="proceso.php" onSubmit="return Validar();">
+        <form class="form-control mt-4" method="post" action="/tp2/vista/accion/accion_login.php" onSubmit="return Validar();">
 
             <div class="title">
                 Member Login
@@ -38,9 +38,9 @@
 
     <script>
         function Validar(){
-            var resp = true;
-            var usernameVal = $("#username_form").val();
-            var passwordVal = $("#password_form").val();
+            let resp = true;
+            const usernameVal = $("#username_form").val();
+            const passwordVal = $("#password_form").val();
 
             if (usernameVal != ""){
                 $("#username_form").css("border", "1px solid #ced4da");
@@ -67,7 +67,9 @@
                 $("#p2").text("");
             } else if (resp){
                 $("#password_form").css("border", "2px solid red");
-                $("#p2").text("Please enter a valid password");
+                $("#p2").css({"width":"70%", "margin":"0 auto","padding-top":"1em", "padding-bottom":"1em"});
+                
+                $("#p2").text("Please enter a valid password, at least 8 characters long, no spaces, no special characters, different from the username");
                 $("#password_form").focus();
                 resp = false;
             }

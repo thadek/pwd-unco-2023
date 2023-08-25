@@ -63,6 +63,7 @@ if($_POST){
      }
      
 }else{
+    
     $contenido = 
     <<<CONTENIDO
     No se recibieron datos

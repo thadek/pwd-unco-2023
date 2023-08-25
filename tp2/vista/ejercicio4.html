@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ingresar Pelicula</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/tp2/vista/css/ej4.css">
 </head>
 <body class="blueBody">
     <div class="container col-sm-12 col-md-7 col-lg-7 col-xl-7 mb-4" >
-        <form id="form1" class="row g-2 mt-4 d-flex align-items-center justify-content-center" method="post" action="proceso.php" onSubmit="return Validar();">
+        <form id="form1" class="row g-2 mt-4 d-flex align-items-center justify-content-center" method="post" action="/tp2/vista/accion/accion_pelicula.php" onSubmit="return Validar();">
 
             <div>
                 <h3><span><i class="bi bi-pencil-square"></i></span> Cinem@s</h3>
@@ -59,8 +59,8 @@
             </div>
 
             <div id="genero" class="col-md-5 ps-4">
-                <label for="genero_form" class="form-label cusLabel">G&eacute;nero:</label>
-                <select class="form-select cusLabel mb-3" name="genero_form" id="genero_form">
+                <label for="genero_form" class="form-label cusLabel ">G&eacute;nero:</label>
+                <select class="form-select cusLabel" name="genero_form" id="genero_form">
                     <option value="0" selected>-Seleccionar-</option>
                     <option value="1">Acci&oacute;n</option>
                     <option value="2">Comedia</option>
@@ -73,7 +73,7 @@
             <div class="col-md-5 pe-4">
                 <label for="duracion_form" class="form-label cusLabel">Duraci&oacute;n:</label>
                 <input type="text" class="form-control" name="duracion_form" id="duracion_form">
-                <p class="cusP">(Minutos)</p><p id="p8"></p>
+                <p class="cusP">(Minutos)</p><p id="p9"></p>
             </div>
 
             <div class="col-md-5 ps-4">
@@ -95,7 +95,7 @@
             <div class="col-md-10">
                 <label for="sinopsis_form" class="form-label cusLabel">Sinopsis:</label>
                 <textarea rows="3" class="form-control" name="sinopsis_form" id="sinopsis_form"></textarea>
-                <p id="p9"></p>
+                <p id="p10"></p>
             </div>
 
             <div class="d-flex align-items-center justify-content-end mb-3 me-3">
@@ -110,18 +110,18 @@
 
     <script>
         function Validar(){
-            var resp = true;
-            var tituloVal = $("#titulo_form").val();
-            var actoresVal = $("#actores_form").val();
-            var directorVal = $("#director_form").val();
-            var guionVal = $("#guion_form").val();
-            var produccionVal = $("#produccion_form").val();
-            var anioVal = $("#anio_form").val();
-            var nacionalidadVal = $("#nacionalidad_form").val();
-            var generoVal = $("#genero_form").val();
-            var duracionVal = $("#duracion_form").val();
-            var resEdadVal = $("resEdad_form").val();
-            var sinopsisVal = $("#sinopsis_form").val();
+            let resp = true;
+            const tituloVal = $("#titulo_form").val();
+            const actoresVal = $("#actores_form").val();
+            const directorVal = $("#director_form").val();
+            const guionVal = $("#guion_form").val();
+            const produccionVal = $("#produccion_form").val();
+            const anioVal = $("#anio_form").val();
+            const nacionalidadVal = $("#nacionalidad_form").val();
+            const generoVal = $("#genero_form").val();
+            const duracionVal = $("#duracion_form").val();
+            const resEdadVal = $("resEdad_form").val();
+            const sinopsisVal = $("#sinopsis_form").val();
 
             if (tituloVal != ""){
                 $("#titulo_form").css("border", "1px solid #ced4da");
@@ -155,90 +155,90 @@
 
             if (guionVal != ""){
                 $("#guion_form").css("border", "1px solid #ced4da");
-                $("#p3").text("");
+                $("#p4").text("");
             } else {
                 $("#guion_form").css("border", "2px solid red");
-                $("#p3").text("Por favor ingrese el guión");
+                $("#p4").text("Por favor ingrese el guión");
                 $("#guion_form").focus();
                 resp = false;
             }
 
             if (produccionVal != ""){
                 $("#produccion_form").css("border", "1px solid #ced4da");
-                $("#p4").text("");
+                $("#p5").text("");
             } else {
                 $("#produccion_form").css("border", "2px solid red");
-                $("#p4").text("Por favor ingrese la producción");
+                $("#p5").text("Por favor ingrese la producción");
                 $("#produccion_form").focus();
                 resp = false;
             }
 
             if (anioVal != ""){
                 $("#anio_form").css("border", "1px solid #ced4da");
-                $("#p5").text("");
+                $("#p6").text("");
             } else {
                 $("#anio_form").css("border", "2px solid red");
-                $("#p5").text("Por favor ingrese el año");
+                $("#p6").text("Por favor ingrese el año");
                 $("#anio_form").focus();
                 resp = false;
             }
             
             if ($.isNumeric(anioVal) && anioVal.length <= 4){
                 $("#anio_form").css("border", "1px solid #ced4da");
-                $("#p5").text("");
+                $("#p6").text("");
             } else if (anioVal != ""){
                 $("#anio_form").css("border", "2px solid red");
-                $("#p5").text("Por favor ingrese un año válido");
+                $("#p6").text("Por favor ingrese un año válido");
                 $("#anio_form").focus();
                 resp = false;
             }
 
             if (nacionalidadVal != ""){
                 $("#nacionalidad_form").css("border", "1px solid #ced4da");
-                $("#p6").text("");
+                $("#p7").text("");
             } else {
                 $("#nacionalidad_form").css("border", "2px solid red");
-                $("#p6").text("Por favor ingrese la nacionalidad");
+                $("#p7").text("Por favor ingrese la nacionalidad");
                 $("#nacionalidad_form").focus();
                 resp = false;
             }
 
             if (generoVal != 0){
                 $("#genero_form").css("border", "1px solid #ced4da");
-                $("#p7").text("");
+                $("#p8").text("");
             } else {
                 $("#genero_form").css("border", "2px solid red");
-                $("#p7").text("Por favor ingrese el género");
+                $("#p8").text("Por favor ingrese el género");
                 $("#genero_form").focus();
                 resp = false;
             }
 
             if (duracionVal != ""){
                 $("#duracion_form").css("border", "1px solid #ced4da");
-                $("#p8").text("");
+                $("#p9").text("");
             } else {
                 $("#duracion_form").css("border", "2px solid red");
-                $("#p8").text("Por favor ingrese la duración");
+                $("#p9").text("Por favor ingrese la duración");
                 $("#duracion_form").focus();
                 resp = false;
             }
 
             if ($.isNumeric(duracionVal) && duracionVal.length <= 3){
                 $("#duracion_form").css("border", "1px solid #ced4da");
-                $("#p8").text("");
+                $("#p9").text("");
             } else if (anioVal != ""){
                 $("#duracion_form").css("border", "2px solid red");
-                $("#p8").text("Por favor ingrese una duración válida");
+                $("#p9").text("Por favor ingrese una duración válida");
                 $("#duracion_form").focus();
                 resp = false;
             }
 
             if (sinopsisVal != ""){
                 $("#sinopsis_form").css("border", "1px solid #ced4da");
-                $("#p9").text("");
+                $("#p10").text("");
             } else {
                 $("#sinopsis_form").css("border", "2px solid red");
-                $("#p9").text("Por favor ingrese la sinopsis");
+                $("#p10").text("Por favor ingrese la sinopsis");
                 $("#sinopsis_form").focus();
                 resp = false;
             }
