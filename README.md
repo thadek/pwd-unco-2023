@@ -12,5 +12,7 @@
 - Ferrada, Mauro
 
 
-### Repositorio de TPs
-TPs entregables correspondientes al grupo 8.
+## Info sobre directorios
+- Los directorios tp1,tp2,tp3 contienen las entregas correspondientes.
+- El directorio dif_versiones_tps : Este directorio contiene diferentes versiones no entregables realizadas por nuestros integrantes.
+
