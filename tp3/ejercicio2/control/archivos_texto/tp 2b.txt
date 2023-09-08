@@ -1,0 +1,48 @@
+6, 9 , 15, 16 
+
+
+
+6)  PROGRAMA PRINCIPAL
+	Entero a, b, contenedor
+	ESCRIBIR ("Ingrese un numero: ")
+	LEER (a)
+	ESCRIBIR ("Ingrese un numero: ")
+	LEER (b)
+	a <--- contenedor
+	b <--- a
+	contenedor <---- b
+	ESCRIBIR ("El valor nuevo de 'a' es: ", a)
+	ESCRIBI ("El valor nuevo de 'b' es: ", b)
+    FIN PROGRAMA
+
+	 
+9)
+	PROGRAMA PRINCIPAL
+		Entero a, b, resultado 	
+		ESCRIBIR ("Ingrese un numero entero: ") 
+		LEER (a)
+		ESCRIBIR ("Ingrese un numero entero mayor al anterior: ")
+		LEER (b)
+		resultado <---- a/b 
+		ESCRIBIR ("El resultado es: ", resultado) 
+	FIN PROGRAMA
+
+
+15)
+	PROGRAMA PRINCIPAL
+		Real peso, altura, imc 
+		ESCRIBIR ("Ingrese su peso (kg) : ")
+		LEER (peso)
+		ESCRIBIR ("Ingreses su altura (cm) : ")
+		LEER (altura) 
+		imc <--- peso / altura
+		ESCRIBIR ("El indice de masa corporal es: ", imc) 
+	FIN PROGRAMA
+
+
+   peso	|   altura   |      imc    |
+________|____________|_____________|__
+	|            |             |
+a) 60	|    1.65    |     0,36    |
+	|            |             |
+b) 90   |    1.72    |  52,325581  |

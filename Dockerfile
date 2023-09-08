@@ -1,7 +1,20 @@
-FROM php:8.0-apache
+FROM php:8.2-apache
 WORKDIR /var/www/html
 
-COPY tp1/ tp1
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    git \
+    unzip
+
+
+COPY . /var/www/html
 EXPOSE 80
-VOLUME /var/www/html
+
+RUN mv ./php.ini "$PHP_INI_DIR/php.ini"
+
+RUN docker-php-ext-install exif
+
+RUN chown -R www-data:www-data /var/www/html
+
 
