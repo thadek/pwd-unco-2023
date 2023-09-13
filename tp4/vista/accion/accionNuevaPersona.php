@@ -15,15 +15,15 @@ require_once('../../modelo/Persona.php');
 require_once('../../control/AbmAuto.php');
 require_once('../../control/AbmPersona.php');
 
-// Verifica si se ha enviado el formulario
+$datos = darDatosSubmitted();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtén los valores del formulario
-    $nroDni = $_POST["nroDni"];
-    $nombre = $_POST["nombre"];
-    $apellido = $_POST["apellido"];
-    $fechaNac = $_POST["fechaNac"];
-    $telefono = $_POST["telefono"];
-    $domicilio = $_POST["domicilio"];
+    
+    $nroDni = $datos["nroDni"];
+    $nombre = $datos["nombre"];
+    $apellido = $datos["apellido"];
+    $fechaNac = $datos["fechaNac"];
+    $telefono = $datos["telefono"];
+    $domicilio = $datos["domicilio"];
 
     // Realiza las validaciones necesarias, por ejemplo, si el DNI ya existe en la base de datos
     $abmPersona = new AbmPersona();

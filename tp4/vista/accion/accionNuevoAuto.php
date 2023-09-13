@@ -5,11 +5,12 @@ require_once('../../modelo/Persona.php');
 require_once('../../control/AbmAuto.php');
 require_once('../../control/AbmPersona.php');
 
+$datos = darDatosSubmitted();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $patente = $_POST["patente"];
-    $marca = $_POST["marca"];
-    $modelo = $_POST["modelo"];
-    $dniDuenio = $_POST["dniDuenio"];
+    $patente = $datos["patente"];
+    $marca = $datos["marca"];
+    $modelo = $datos["modelo"];
+    $dniDuenio = $datos["dniDuenio"];
 
     
     $abmPersona = new AbmPersona();
@@ -17,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($persona === null) {
         
-        echo "La persona no está registrada. <a href='NuevaPersona.php'>Registrar Nueva Persona</a>";
+        echo "La persona no está registrada. <a href='../NuevaPersona.php'>Registrar Nueva Persona</a>";
     } else {
         
         $abmAuto = new AbmAuto();

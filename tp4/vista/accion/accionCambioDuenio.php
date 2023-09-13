@@ -4,10 +4,10 @@ require_once('../../modelo/Auto.php');
 require_once('../../modelo/Persona.php');
 require_once('../../control/AbmAuto.php');
 require_once('../../control/AbmPersona.php');
-
+$datos = darDatosSubmitted();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $patente = $_POST['patente'];
-    $dni = $_POST['nroDni'];
+    $patente = $datos['patente'];
+    $dni = $datos['nroDni'];
 
     $abmAuto = new AbmAuto();
     $abmPersona = new AbmPersona();
