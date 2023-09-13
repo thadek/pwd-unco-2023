@@ -76,7 +76,7 @@ class AbmAuto {
             }
 
             // Si el auto no existe, realizar la inserción en la base de datos
-            $query = "INSERT INTO auto (patente, marca, modelo, dni_duenio) VALUES (:patente, :marca, :modelo, :dniDuenio)";
+            $query = "INSERT INTO auto (patente, marca, modelo, dniDuenio) VALUES (:patente, :marca, :modelo, :dniDuenio)";
             $stmt = $this->conexion->prepare($query);
             $stmt->bindParam(':patente', $patente);
             $stmt->bindParam(':marca', $marca);
