@@ -74,4 +74,22 @@ class AbmAuto {
                 return "Error al registrar el auto: " . $e->getMessage();
             }
         }
+
+        public function obtenerAutosPorDni($dniDuenio) {
+            $query = "SELECT * FROM autos WHERE dniDuenio = :dniDuenio";
+            $stmt = $this->conexion->prepare($query);
+            $stmt->bindParam(':dniDuenio', $dniDuenio);
+            $stmt->execute();
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $auto = new Auto();
+                $auto->setPatente($row['patente']);
+                $auto->setMarca($row['marca']);
+                $auto->setModelo($row['modelo']);
+                $auto->setDniDuenio($row['dniDuenio']);
+                $autos[] = $auto;
+            }
+
+            return $auto;
+        }
 }
