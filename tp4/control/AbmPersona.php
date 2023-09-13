@@ -5,7 +5,7 @@ class AbmPersona {
 
     public function __construct() {
         try {
-            $this->conexion = new PDO("mysql:host=nombre_del_servidor;dbname=nombre_de_la_base_de_datos", "nombre_de_usuario", "contraseña");
+            $this->conexion = new PDO("mysql:host=localhost;dbname=infoautos", "nombre_de_usuario", "contraseña");
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Error en la conexión a la base de datos: " . $e->getMessage());
