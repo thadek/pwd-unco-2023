@@ -8,9 +8,13 @@
 </head>
 <body class="bg-dark">
 
-<main class="container-fluid container text-center">
+<main class="container-fluid container text-center text-light">
 
 <?php
+
+echo "pruebo conexion db";
+include_once('./control/AbmAuto.php');
+$controlador = new AbmAuto();
 
 
 
