@@ -6,6 +6,12 @@
 <body>
     <h1>Autos de Persona</h1>
     <?php
+    require_once("../utils/functions.php");
+    require_once('../modelo/Auto.php');
+    require_once('../modelo/Persona.php');
+    require_once('../control/AbmAuto.php');
+    require_once('../control/AbmPersona.php');
+
     // Verifica si se proporcionó un DNI en la URL
     if (isset($_GET['dni'])) {
         // Obtiene el DNI de la URL
