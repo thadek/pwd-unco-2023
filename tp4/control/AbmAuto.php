@@ -1,6 +1,6 @@
 <?php
 
-require_once('../modelo/Auto.php');
+require_once('../../modelo/Auto.php');
 
 class AbmAuto {
     private $conexion;
@@ -44,7 +44,7 @@ class AbmAuto {
                 $auto->setPatente($row['patente']);
                 $auto->setMarca($row['marca']);
                 $auto->setModelo($row['modelo']);
-                $auto->setDniDuenio($row['dni_duenio']);
+                $auto->setDniDuenio($row['dniDuenio']);
                 return $auto;
             } else {
                 return null; 
