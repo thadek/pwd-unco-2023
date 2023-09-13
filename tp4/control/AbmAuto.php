@@ -1,11 +1,13 @@
 <?php
 
+require_once('Auto.php');
+
 class AbmAuto {
     private $conexion;
 
     public function __construct() {
         try {
-            $this->conexion = new PDO("mysql:host=localhost;dbname=infoautos", "nombre_de_usuario", "contraseña");
+            $this->conexion = new PDO("mysql:host=localhost;dbname=infoautos", "root", "contraseña");
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Error en la conexión a la base de datos: " . $e->getMessage());
