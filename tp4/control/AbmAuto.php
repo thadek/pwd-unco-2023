@@ -92,9 +92,10 @@ class AbmAuto {
         }
 
         public function obtenerAutosPorDni($dniDuenio) {
-            $query = "SELECT * FROM autos WHERE dniDuenio = :dniDuenio";
+            $query = "SELECT * FROM auto WHERE dniDuenio = :dniDuenio";
             $stmt = $this->conexion->prepare($query);
             $stmt->bindParam(':dniDuenio', $dniDuenio);
+            $stmt->execute();
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $auto = new Auto();
@@ -105,7 +106,7 @@ class AbmAuto {
                 $autos[] = $auto;
             }
 
-            return $auto;
+            return $autos;
         }
         public function modificarAuto($auto) {
             // Verifica si el auto existe en la base de datos
