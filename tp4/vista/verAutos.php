@@ -2,9 +2,18 @@
 <html>
 <head>
     <title>Ver Autos</title>
-    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Agrega un archivo CSS para el estilo -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
+
+     
 </head>
-<body>
+<body class="bg-dark">
+
+<?php
+    include_once("./estructura/Navbar.php");
+?>
+
     <h1>Lista de Autos</h1>
 
     <?php
@@ -44,5 +53,8 @@
     }
     ?>
 
+<?php
+    include_once("./estructura/Footer.php");
+?>
 </body>
 </html>
