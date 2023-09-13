@@ -1,13 +1,13 @@
 <?php
 
-require_once('../modelo/Auto.php');
+require_once('../../modelo/Auto.php');
 
 class AbmAuto {
     private $conexion;
 
     public function __construct() {
         try {
-            $this->conexion = new PDO("mysql:host=localhost;dbname=infoautos", "root", "contraseña");
+            $this->conexion = new PDO("mysql:host=127.0.0.1;port=3306;dbname=infoautos", "root", getenv("SQL_PASSWORD") || "");
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Error en la conexión a la base de datos: " . $e->getMessage());
@@ -25,7 +25,7 @@ class AbmAuto {
                 $auto->setPatente($row['patente']);
                 $auto->setMarca($row['marca']);
                 $auto->setModelo($row['modelo']);
-                $auto->setDniDuenio($row['dni_duenio']);
+                $auto->setDniDuenio($row['dniDuenio']);
                 $autos[] = $auto;
             }
 
@@ -44,7 +44,7 @@ class AbmAuto {
                 $auto->setPatente($row['patente']);
                 $auto->setMarca($row['marca']);
                 $auto->setModelo($row['modelo']);
-                $auto->setDniDuenio($row['dni_duenio']);
+                $auto->setDniDuenio($row['dniDuenio']);
                 return $auto;
             } else {
                 return null; 
