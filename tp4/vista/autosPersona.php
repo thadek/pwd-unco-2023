@@ -12,10 +12,10 @@
         $dniDuenio = $_GET['dni'];
 
         // Incluye la capa de control AbmPersona
-        require_once('AbmPersona.php');
+        require_once('../control/AbmPersona.php');
 
         // Incluye la capa de control AbmAuto
-        require_once('AbmAuto.php');
+        require_once('../control/AbmAuto.php');
 
         // Crea instancias de las capas de control AbmPersona y AbmAuto
         $abmPersona = new AbmPersona();
