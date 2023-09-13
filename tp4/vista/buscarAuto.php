@@ -6,6 +6,8 @@
 </head>
 <body>
     <?php
+    require_once('../../control/AbmAuto.php');
+    require_once('../../control/AbmPersona.php');
     ?>
 
 

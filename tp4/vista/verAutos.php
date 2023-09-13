@@ -9,6 +9,8 @@
 
     <?php
     // Incluye las clases de la capa de control
+    require_once('../modelo/Auto.php');
+    require_once('../modelo/Persona.php');
     require_once('../control/AbmAuto.php');
     require_once('../control/AbmPersona.php');
 

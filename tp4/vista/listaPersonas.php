@@ -7,6 +7,7 @@
     <h1>Lista de Personas</h1>
     <?php
     // Incluye la capa de control AbmPersona
+    require_once('../modelo/Persona.php');
     require_once('../control/AbmPersona.php');
 
     // Crea una instancia de la capa de control AbmPersona
