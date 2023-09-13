@@ -16,9 +16,9 @@
     
     
 
-    
+    $datos = darDatosSubmitted();
     if (isset($_POST['patente'])) {
-        $patente = $_POST['patente'];
+        $patente = $datos['patente'];
 
         
         $abmAuto = new AbmAuto();

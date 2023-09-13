@@ -49,7 +49,25 @@ class AbmAuto {
             }
         }
 
+        public function modificarDuenioAuto($patente, $nuevoDniDuenio) {
+            
+            if ($this->obtenerDatosAuto($patente) === null) {
+                return "El auto no existe en la base de datos.";
+            }
         
+            
+            $query = "UPDATE auto SET dniDuenio = :nuevoDniDuenio WHERE patente = :patente";
+            $stmt = $this->conexion->prepare($query);
+            $stmt->bindParam(':nuevoDniDuenio', $nuevoDniDuenio);
+            $stmt->bindParam(':patente', $patente);
+        
+            try {
+                $stmt->execute();
+                return "Dueño del auto actualizado con éxito.";
+            } catch (PDOException $e) {
+                return "Error al actualizar el dueño del auto: " . $e->getMessage();
+            }
+        }
 
         public function agregarNuevoAuto($patente, $marca, $modelo, $dniDuenio) {
             
@@ -58,7 +76,7 @@ class AbmAuto {
             }
 
             // Si el auto no existe, realizar la inserción en la base de datos
-            $query = "INSERT INTO auto (patente, marca, modelo, dni_duenio) VALUES (:patente, :marca, :modelo, :dniDuenio)";
+            $query = "INSERT INTO auto (patente, marca, modelo, dniDuenio) VALUES (:patente, :marca, :modelo, :dniDuenio)";
             $stmt = $this->conexion->prepare($query);
             $stmt->bindParam(':patente', $patente);
             $stmt->bindParam(':marca', $marca);
@@ -74,7 +92,7 @@ class AbmAuto {
         }
 
         public function obtenerAutosPorDni($dniDuenio) {
-            $query = "SELECT * FROM autos WHERE dniDuenio = :dniDuenio";
+            $query = "SELECT * FROM auto WHERE dniDuenio = :dniDuenio";
             $stmt = $this->conexion->prepare($query);
             $stmt->bindParam(':dniDuenio', $dniDuenio);
             $stmt->execute();
@@ -88,6 +106,27 @@ class AbmAuto {
                 $autos[] = $auto;
             }
 
-            return $auto;
+            return $autos;
+        }
+        public function modificarAuto($auto) {
+            // Verifica si el auto existe en la base de datos
+            if ($this->obtenerDatosAuto($auto->getPatente()) === null) {
+                return "El auto no existe en la base de datos.";
+            }
+        
+            // Actualiza los datos del auto en la base de datos
+            $query = "UPDATE auto SET marca = :marca, modelo = :modelo, dniDuenio = :dniDuenio WHERE patente = :patente";
+            $stmt = $this->conexion->prepare($query);
+            $stmt->bindParam(':marca', $auto->getMarca());
+            $stmt->bindParam(':modelo', $auto->getModelo());
+            $stmt->bindParam(':dniDuenio', $auto->getDniDuenio());
+            $stmt->bindParam(':patente', $auto->getPatente());
+        
+            try {
+                $stmt->execute();
+                return "Auto modificado con éxito.";
+            } catch (PDOException $e) {
+                return "Error al modificar el auto: " . $e->getMessage();
+            }
         }
 }
