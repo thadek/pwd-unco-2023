@@ -22,14 +22,14 @@
         echo '<tr><th>Dni</th><th>Nombre</th><th>Apellido</th><th>Fecha Nac</th><th>Telefono</th><th>Domicilio</th></tr>';
         
         // Itera a través de la lista de personas y muestra los datos
-        foreach ($personas as $personas) {
+        foreach ($personas as $persona) {
             echo '<tr>';
-            echo '<td>' . '<a href="autosPersona.php?dni=' . $personas->getNroDni(). '">' . $persona->getNroDni() . '</a></td>';
-            echo '<td>' . $personas->getNombre() . '</td>';
-            echo '<td>' . $personas->getApellido() . '</td>';
-            echo '<td>' . $personas->getFechaNac() .'</td>';
-            echo '<td>' . $personas->getTelefono() .'</td>';
-            echo '<td>' . $personas->getDomicilio() .'</td>';
+            echo '<td>' . '<a href="autosPersona.php?dni=' . $persona->getNroDni(). '">' . $persona->getNroDni() . '</a></td>';
+            echo '<td>' . $persona->getNombre() . '</td>';
+            echo '<td>' . $persona->getApellido() . '</td>';
+            echo '<td>' . $persona->getFechaNac() .'</td>';
+            echo '<td>' . $persona->getTelefono() .'</td>';
+            echo '<td>' . $persona->getDomicilio() .'</td>';
             echo '</tr>';
         }
         
