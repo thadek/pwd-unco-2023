@@ -7,6 +7,7 @@
     <h1>Lista de Personas</h1>
     <?php
     // Incluye la capa de control AbmPersona
+    require_once('../modelo/Persona.php');
     require_once('../control/AbmPersona.php');
 
     // Crea una instancia de la capa de control AbmPersona
@@ -23,7 +24,7 @@
         // Itera a través de la lista de personas y muestra los datos
         foreach ($personas as $personas) {
             echo '<tr>';
-            echo '<td>' . '<a href="autosPersona.php?dni=' . $personas->getNroDni(). '"></a>' . '</td>';
+            echo '<td>' . '<a href="autosPersona.php?dni=' . $personas->getNroDni(). '">' . $persona->getNroDni() . '</a></td>';
             echo '<td>' . $personas->getNombre() . '</td>';
             echo '<td>' . $personas->getApellido() . '</td>';
             echo '<td>' . $personas->getFechaNac() .'</td>';
@@ -37,8 +38,6 @@
         echo '<p>No hay personas cargadas.</p>';
     }
     echo '</ul>';
-
-    echo '<a href="autosPersona.php"> buscar</a>';
     ?>
 </body>
 </html>

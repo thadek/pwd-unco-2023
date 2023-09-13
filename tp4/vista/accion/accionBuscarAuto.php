@@ -8,8 +8,13 @@
     <h1>Resultado de la Búsqueda</h1>
 
     <?php
+    require_once("../../utils/functions.php");
+    require_once('../../modelo/Auto.php');
+    require_once('../../modelo/Persona.php');
     require_once('../../control/AbmAuto.php');
     require_once('../../control/AbmPersona.php');
+    
+    
 
     
     if (isset($_POST['patente'])) {

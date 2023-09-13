@@ -1,6 +1,5 @@
 <?php
 
-require_once('../modelo/Persona.php');
 
 class AbmPersona {
     private $conexion;
