@@ -1,6 +1,6 @@
 <?php
-require_once('persona.php');
-require_once('auto.php');
+require_once('Persona.php');
+require_once('Auto.php');
 
 class Controlador {
     private $conexion;

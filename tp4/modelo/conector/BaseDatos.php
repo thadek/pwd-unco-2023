@@ -13,10 +13,10 @@ class BaseDatos extends PDO {
     
     public function __construct(){
         $this->engine = 'mysql';
-        $this->host = 'localhost';
-        $this->database = 'infoautos';
-        $this->user = 'root';
-        $this->pass = '';
+        $this->host = $_ENV("SQL_HOSTNAME") || 'localhost';
+        $this->database = $_ENV("SQL_DBNAME") || 'infoautos';
+        $this->user = $_ENV("SQL_USERNAME") ||'root';
+        $this->pass = $_ENV("SQL_PASSWORD") || '';
         $this->debug = true;
         $this->error ="";
         $this->sql ="";
@@ -33,7 +33,7 @@ class BaseDatos extends PDO {
        
     }
     /**
-     * Inicia la coneccion con el Servidor y la  Base Datos Mysql.
+     * Inicia la conexion con el Servidor y la  Base Datos Mysql.
      * Retorna true si la coneccion con el servidor se pudo establecer y false en caso contrario
      *
      * @return boolean
@@ -139,7 +139,8 @@ class BaseDatos extends PDO {
    }
    
    /**
-    * Devuelve la cantidad de filas afectadas por la ejecucion SQL. Si el valor es <0 no se pudo realizar la opercion
+    * Devuelve la cantidad de filas afectadas por la ejecucion SQL. 
+    * Si el valor es <0 no se pudo realizar la opercion
     * @return integer 
     * 
     */

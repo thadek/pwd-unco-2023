@@ -20,7 +20,7 @@ class Persona{
     
     }
 
-    public function setear($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio){
+    public function cargar($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio){
         $this->setDni($nroDni);
         $this->setApellido($apellido);
         $this->setNombre($nombre);
@@ -90,7 +90,7 @@ class Persona{
         return $this->mensajeOperacion;
     }
 
-    public function cargar(){
+    public function buscar(){
         $resp = false;
         $base = new BaseDatos();
         $sql = "SELECT * FROM Persona WHERE nroDni = ".$this->getNroDni();
@@ -99,7 +99,7 @@ class Persona{
             if($res>-1){
                 if($res>0){
                     $row = $base->Registro();
-                    $this->setear($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio']);
+                    $this->cargar($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio']);
                     
                 }
             }
@@ -183,7 +183,7 @@ class Persona{
                 
                 while ($row = $base->Registro()){
                     $obj= new Tabla();
-                    $obj->setear($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domilicio']);
+                    $obj->cargar($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domilicio']);
                     array_push($arreglo, $obj);
                 }
                

@@ -1,5 +1,6 @@
 <?php
-class auto {
+class Auto {
+
     private $patente;
     private $marca;
     private $modelo;
@@ -14,7 +15,7 @@ class auto {
         $this->mensajeOperacion ="";
     }
 
-    public function setear($patente, $marca, $modelo, $dniDuenio){
+    public function cargar($patente, $marca, $modelo, $dniDuenio){
         $this->setPatente($patente);
         $this->setMarca($marca);
         $this->setModelo($modelo);
@@ -61,7 +62,7 @@ class auto {
         $this->mensajeOperacion = $mensajeOperacion;
     }
 
-    public function cargar(){
+    public function buscar(){
         $resp = false;
         $base=new BaseDatos();
         $sql="SELECT * FROM auto WHERE patente = ".$this->getPatente();
@@ -70,7 +71,7 @@ class auto {
             if($res>-1){
                 if($res>0){
                     $row = $base->Registro();
-                    $this->setear($row['patente'], $row['marca'], $row['modelo'], $row['dniDuenio']);
+                    $this->cargar($row['patente'], $row['marca'], $row['modelo'], $row['dniDuenio']);
                 }
             }
         } else {
@@ -121,7 +122,7 @@ class auto {
         $sql="DELETE FROM auto WHERE patente=".$this->getPatente();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
-                return true;
+                $resp = true;
             } else {
                 $this->setMensajeOperacion("auto->eliminar: ".$base->getError());
             }
@@ -144,7 +145,7 @@ class auto {
                 
                 while ($row = $base->Registro()){
                     $obj= new auto();
-                    $obj->setear($row['patente'], $row['marca'], $row['modelo'], $row['dniDuenio']);
+                    $obj->cargar($row['patente'], $row['marca'], $row['modelo'], $row['dniDuenio']);
                     array_push($arreglo, $obj);
                 }
                
