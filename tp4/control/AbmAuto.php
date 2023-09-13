@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../modelo/Auto.php');
+require_once('../modelo/Auto.php');
 
 class AbmAuto {
     private $conexion;
