@@ -14,6 +14,26 @@ class AbmPersona {
         }
     }
 
+     //Obtener todas las personas
+     public function obtenerTodasLasPersonas() {
+        $query = "SELECT * FROM persona";
+        $stmt = $this->conexion->query($query);
+        
+        $personas = array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $persona = new Persona();
+            $persona->setDni($row['dni']);
+            $persona->setNombre($row['nombre']);
+            $persona->setApellido($row['apellido']);
+            $persona->setFechaNac($row['fecha_nac']);
+            $persona->setTelefono($row['telefono']);
+            $persona->setDomicilio($row['domicilio']);
+            $personas[] = $persona;
+        }
+
+        return $personas;
+     }
+
    
      // Obtener persona por dni
      public function obtenerDatosPersona($dni) {
