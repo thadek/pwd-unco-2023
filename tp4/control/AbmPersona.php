@@ -57,7 +57,7 @@ class AbmPersona {
 
 
 
-    public function agregarNuevaPersona($nroDni, $nombre, $apellido, $fechaNac, $telefono, $domicilio) {
+    public function agregarNuevaPersona($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio) {
 
         if ($this->obtenerDatosPersona($nroDni) !== null) {
             return "La persona ya está registrada.";
@@ -65,11 +65,12 @@ class AbmPersona {
 
         
         // Si la persona no existe, realizar la inserción en la base de datos
-        $query = "INSERT INTO persona (nroDni, nombre, apellido, fechaNac, telefono, domicilio) VALUES (:dni, :nombre, :apellido, :fechaNac, :telefono, :domicilio)";
+        $query = "INSERT INTO persona (nroDni, apellido, nombre, fechaNac, telefono, domicilio) 
+        VALUES (:nroDni, :apellido, :nombre, :fechaNac, :telefono, :domicilio)";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(':nroDni', $nroDni);
-        $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':apellido', $apellido);
+        $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':fechaNac', $fechaNac);
         $stmt->bindParam(':telefono', $telefono);
         $stmt->bindParam(':domicilio', $domicilio);
