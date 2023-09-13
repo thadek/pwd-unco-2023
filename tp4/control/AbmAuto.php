@@ -25,7 +25,7 @@ class AbmAuto {
                 $auto->setPatente($row['patente']);
                 $auto->setMarca($row['marca']);
                 $auto->setModelo($row['modelo']);
-                $auto->setDniDuenio($row['dni_duenio']);
+                $auto->setDniDuenio($row['dniDuenio']);
                 $autos[] = $auto;
             }
 
