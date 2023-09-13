@@ -64,8 +64,8 @@ class Auto {
 
     public function buscar(){
         $resp = false;
-        $base=new BaseDatos();
-        $sql="SELECT * FROM auto WHERE patente = ".$this->getPatente();
+        $base = new BaseDatos();
+        $sql = "SELECT * FROM auto WHERE patente = ".$this->getPatente();
         if ($base->Iniciar()) {
             $res = $base->Ejecutar($sql);
             if($res>-1){
@@ -84,7 +84,7 @@ class Auto {
 
     public function insertar(){
         $resp = false;
-        $base=new BaseDatos();
+        $base = new BaseDatos();
         $sql="INSERT INTO tabla(patente, marca, modelo, dniDuenio)  VALUES (".$this->getPatente().",'".$this->getMarca()."','".$this->getModelo()."','".$this->getDniDuenio()."')";
         if ($base->Iniciar()) {
             if ($patente = $base->Ejecutar($sql)) {
@@ -101,8 +101,8 @@ class Auto {
 
     public function modificar(){
         $resp = false;
-        $base=new BaseDatos();
-        $sql="UPDATE auto SET marca = '".$this->getMarca()."',modelo='".$this->getModelo()."',
+        $base = new BaseDatos();
+        $sql = "UPDATE auto SET marca = '".$this->getMarca()."',modelo='".$this->getModelo()."',
         dniDuenio='".$this->getDniDuenio()."' WHERE patente=". $this->getPatente();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
@@ -118,8 +118,8 @@ class Auto {
 
     public function eliminar(){
         $resp = false;
-        $base=new BaseDatos();
-        $sql="DELETE FROM auto WHERE patente=".$this->getPatente();
+        $base = new BaseDatos();
+        $sql = "DELETE FROM auto WHERE patente=".$this->getPatente();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -134,8 +134,8 @@ class Auto {
 
     public static function listar($parametro=""){
         $arreglo = array();
-        $base=new BaseDatos();
-        $sql="SELECT * FROM auto ";
+        $base = new BaseDatos();
+        $sql = "SELECT * FROM auto ";
         if ($parametro!="") {
             $sql.='WHERE '.$parametro;
         }
