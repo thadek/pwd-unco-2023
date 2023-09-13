@@ -22,10 +22,10 @@ class AbmPersona {
         $personas = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $persona = new Persona();
-            $persona->setDni($row['dni']);
+            $persona->setDni($row['nroDni']);
             $persona->setNombre($row['nombre']);
             $persona->setApellido($row['apellido']);
-            $persona->setFechaNac($row['fecha_nac']);
+            $persona->setFechaNac($row['fechaNac']);
             $persona->setTelefono($row['telefono']);
             $persona->setDomicilio($row['domicilio']);
             $personas[] = $persona;
