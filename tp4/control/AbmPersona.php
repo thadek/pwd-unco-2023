@@ -27,7 +27,7 @@ class AbmPersona {
             $persona->setDni($row['nroDni']);
             $persona->setNombre($row['nombre']);
             $persona->setApellido($row['apellido']);
-            $persona->setFechaNac($row['fecha_nac']);
+            $persona->setFechaNac($row['fechaNac']);
             $persona->setTelefono($row['telefono']);
             $persona->setDomicilio($row['domicilio']);
             return $persona;
@@ -46,7 +46,7 @@ class AbmPersona {
 
         
         // Si la persona no existe, realizar la inserción en la base de datos
-        $query = "INSERT INTO persona (nroDni, nombre, apellido, fecha_nac, telefono, domicilio) VALUES (:dni, :nombre, :apellido, :fechaNac, :telefono, :domicilio)";
+        $query = "INSERT INTO persona (nroDni, nombre, apellido, fechaNac, telefono, domicilio) VALUES (:dni, :nombre, :apellido, :fechaNac, :telefono, :domicilio)";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(':nroDni', $nroDni);
         $stmt->bindParam(':nombre', $nombre);
