@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<?php
+require("../../configuracion.php");
+?>
+
 <head>
     <title>Autos de Persona</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -8,10 +12,18 @@
     <script src="js/jquery.js"></script>
     <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
+
+<body class="bg-dark">
+    <?php
+    include_once("../estructura/menu/menu.php");
+    $rutalogo = "./img/";
+    include_once("../estructura/Navbar.php");
+    ?>
+
+    <main class="container-fluid cont container text-light">
     <h1>Autos de Persona</h1>
     <?php
-    require("../../configuracion.php");
+
     // Verifica si se proporcionó un DNI en la URL
     if (isset($_GET['dni'])) {
         // Obtiene el DNI de la URL
@@ -56,5 +68,11 @@
         echo '<p>DNI no proporcionado en la URL.</p>';
     }
     ?>
+
+</main>
+<div class="contenedor">
+</div>
+    <?php include_once("../estructura/Footer.php"); ?>
 </body>
+
 </html>

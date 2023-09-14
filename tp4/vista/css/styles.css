@@ -81,6 +81,25 @@ footer{
   border-radius: 5px 0 0 5px;
 }
 
+.img-personas{
+  background:url("../img/personas.png"); 
+  background-size:cover;
+  height:100%;
+  border-radius: 5px 0 0 5px;
+}
+
+
+.img-personaAbs{
+  background:url("../img/personas.png"); 
+  background-size:cover;
+  height:500px;
+  border-radius: 5px 0 0 5px;
+}
+
 .col-sinp{
     padding: 0;
+}
+
+.card{
+  background:transparent;
 }
