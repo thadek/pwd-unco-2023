@@ -6,23 +6,11 @@
 <body>
     <h1>Autos de Persona</h1>
     <?php
-    require_once("../utils/functions.php");
-    require_once('../modelo/Auto.php');
-    require_once('../modelo/Persona.php');
-    require_once('../control/AbmAuto.php');
-    require_once('../control/AbmPersona.php');
-
+    require("../../configuracion.php");
     // Verifica si se proporcionó un DNI en la URL
     if (isset($_GET['dni'])) {
         // Obtiene el DNI de la URL
         $dniDuenio = $_GET['dni'];
-
-        // Incluye la capa de control AbmPersona
-        require_once('../control/AbmPersona.php');
-
-        // Incluye la capa de control AbmAuto
-        require_once('../control/AbmAuto.php');
-
         // Crea instancias de las capas de control AbmPersona y AbmAuto
         $abmPersona = new AbmPersona();
         $abmAuto = new AbmAuto();

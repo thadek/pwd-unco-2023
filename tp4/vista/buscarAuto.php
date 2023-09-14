@@ -11,7 +11,9 @@
 
 <body class="bg-dark">
     <?php
-    include_once("./estructura/Navbar.php");
+    include_once("../estructura/menu/menu.php");
+    $rutalogo = "./img/";
+    include_once("../estructura/Navbar.php");
     ?>
     <main class="container-fluid cont container text-light">
 
@@ -65,7 +67,7 @@
     </div>
 
     <?php
-    include_once("./estructura/Footer.php");
+    include_once("../estructura/Footer.php");
     ?>
 </body>
 
