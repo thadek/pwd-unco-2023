@@ -155,9 +155,9 @@
         var fechaValida = new Date(año, mes - 1, dia); // Restar 1 al mes (enero es 0)
 
         return (
-            dia === fechaValida.getDate() &&
+            año === fechaValida.getFullYear() &&
             mes - 1 === fechaValida.getMonth() &&
-            año === fechaValida.getFullYear()
+            dia === fechaValida.getDate()
         );
     }
 </script>
