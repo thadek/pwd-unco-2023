@@ -9,6 +9,8 @@
     <h1>Actualizar Datos de Persona</h1>
 
     <?php
+ 
+
  require_once("../../../configuracion.php");
 
     $datos = darDatosSubmitted();
@@ -25,12 +27,7 @@
 
         // Modifica los datos de la persona en la base de datos
         $resultado = $abmPersona->modificarDatosPersona($nroDni, $nombre, $apellido, $fechaNac, $telefono, $domicilio);
-
-        if ($resultado === "Persona actualizada con éxito.") {
-            echo '<p>Los datos de la persona se actualizaron con éxito.</p>';
-        } else {
-            echo '<p>Ocurrió un error al actualizar los datos de la persona: ' . $resultado . '</p>';
-        }
+         echo $resultado;
     } else {
         echo '<p>No se han proporcionado datos válidos para actualizar.</p>';
     }

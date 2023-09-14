@@ -28,16 +28,16 @@
                         <div class="img-autos"></div>
                     </div>
                     <div class="col d-flex text-center flex-column align-items-center justify-content-center ">
-                        <form action="accion/accionNuevoAuto.php" class="d-flex flex-column gap-3" style="width:60%" method="post">
+                        <form action="accion/accionNuevoAuto.php" class="d-flex flex-column gap-3" style="width:60%" method="post" id="autoForm">
                             <h4>Registrar Nuevo Auto</h4>
 
                             <input class="form-control p-3" type="text" id="patente" name="patente" placeholder="Patente">
 
 
                             <input class="form-control p-3" type="text" id="marca" name="marca" placeholder="Marca">
-                            <input class="form-control p-3" type="text" id="modelo" name="modelo" placeholder="Modelo(año)" required>
+                            <input class="form-control p-3" type="text" id="modelo" name="modelo" placeholder="Modelo(año)" >
 
-                            <input class="form-control p-3" type="text" id="dniDuenio" name="dniDuenio" required placeholder="DNI del dueño">
+                            <input class="form-control p-3" type="text" id="dniDuenio" name="dniDuenio"  placeholder="DNI del dueño">
 
                             <input class="btn btn-light p-3" type="submit" value="Registrar Auto">
                         </form>

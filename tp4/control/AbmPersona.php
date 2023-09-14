@@ -50,20 +50,26 @@ class AbmPersona {
         return $salida;
     }
 
-    public function modificarDatosPersona($persona) {
+    public function modificarDatosPersona($nroDni, $nombre, $apellido, $fechaNac, $telefono, $domicilio) {
         $salida = "";
+    
         // Verifica si la persona existe en la base de datos
-        if (!($this->obtenerDatosPersona($persona->getDni()) === null)) {
+        $abmPersona = new AbmPersona();
+        $persona = new Persona();
+        $persona->cargar($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio);
+    
+        if (!($abmPersona->obtenerDatosPersona($nroDni) === null)) {
             try {
                 $persona->modificar();
-                $salida = "persona modificada con éxito.";
+                $salida = "Persona modificada con éxito.";
             } catch (PDOException $e) {
                 $salida = "Error al modificar la persona: " . $e->getMessage();
             }
-        }else{
+        } else {
             $salida = "La persona no existe en la base de datos.";
         }
-        return $salida; 
+    
+        return $salida;
     }
 
 }

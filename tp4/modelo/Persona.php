@@ -140,7 +140,7 @@ class Persona{
     public function modificar(){
         $resp = false;
         $base = new BaseDatos();
-        $sql="UPDATE persona SET apellido='".$this->getApellido()."', nombre='".$this->getApellido()."', 
+        $sql="UPDATE persona SET apellido='".$this->getApellido()."', nombre='".$this->getNombre()."', 
         fechaNac='".$this->getFechaNac()."',
         telefono='".$this->getTelefono()."',
         domicilio='".$this->getDomicilio()."'  WHERE nroDni=".$this->getNroDni();
