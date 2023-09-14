@@ -11,7 +11,10 @@
 <body class="bg-dark">
 
 <?php
-    include_once("./estructura/Navbar.php");
+    require_once("../../configuracion.php");
+    $rutalogo = "./img/";
+    include_once("../estructura/menu/menu.php");
+    include_once("../estructura/Navbar.php");
 ?>
 
 <main class="container-fluid cont container text-center text-light">
@@ -19,10 +22,7 @@
 
     <?php
     // Incluye las clases de la capa de control
-    require_once('../modelo/Auto.php');
-    require_once('../modelo/Persona.php');
-    require_once('../control/AbmAuto.php');
-    require_once('../control/AbmPersona.php');
+  
 
     // Crea instancias de las clases de la capa de control
     $abmAuto = new AbmAuto();
@@ -62,7 +62,7 @@
 </main>
 <div class="contenedor"></div>
 <?php
-    include_once("./estructura/Footer.php");
+    include_once("../estructura/Footer.php");
 ?>
 </body>
 </html>

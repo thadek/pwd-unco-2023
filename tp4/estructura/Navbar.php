@@ -2,7 +2,11 @@
 
     <a class="navbar-brand" href="#" style="display:flex; flex-direction:row;">
 
-        <img src="./img/logo.png" width="80" height="80" alt="logo grupo 8">
+    <?php $img = <<<IMG
+       <img src="$rutalogo/logo.png" width="80" height="80" alt="logo grupo 8">
+    IMG;
+    echo $img;
+        ?>
         <h5 class="text-center p-4 ">Trabajo Práctico N°4</h5>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +19,7 @@
 
     <?php
 
-    include_once("./estructura/menu/menu.php");
+
     $navbar = "";
     //Menu básico
     foreach($menu as $item){

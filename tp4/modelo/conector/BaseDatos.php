@@ -13,10 +13,10 @@ class BaseDatos extends PDO {
     
     public function __construct(){
         $this->engine = 'mysql';
-        $this->host = $_ENV["SQL_HOSTNAME"] || 'localhost';
-        $this->database = $_ENV["SQL_DBNAME"] || 'infoautos';
-        $this->user = $_ENV["SQL_USERNAME"] ||'root';
-        $this->pass = $_ENV["SQL_PASSWORD"] || '';
+        $this->host = 'localhost';
+        $this->database = 'infoautos';
+        $this->user = 'root';
+        $this->pass = '';
         $this->debug = true;
         $this->error ="";
         $this->sql ="";
@@ -175,7 +175,6 @@ class BaseDatos extends PDO {
           $this->setIndice(0);
           $this->setResultado($arregloResult);
        }
-       echo " La cantidad es ".$cant;
        return $cant;
        
    }
@@ -201,8 +200,7 @@ class BaseDatos extends PDO {
            }
           
        } 
-      echo " El valor de fila actual es:";
-      print_r($filaActual);
+  
        return $filaActual;
    }
    

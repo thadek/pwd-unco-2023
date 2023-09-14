@@ -14,8 +14,20 @@
     }
     </style>
     <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/inicio.css">
+    <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
+  
 </head>
-<body>
+<body class="bg-dark">
+<?php
+    $rutalogo = "./img/";
+    include_once("../estructura/menu/menu.php");
+    include_once("../estructura/Navbar.php");
+    ?>
+    
+    <main class="container-fluid cont container text-light">
     <h1>Cambio de Dueño de Auto</h1>
 
     <form id="cambioDueñoForm" method="post" action="accion/accionCambioDuenio.php">

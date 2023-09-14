@@ -1,58 +1,31 @@
 <?php
 
+//require_once("../modelo/conector/BaseDatos.php");
 
 class AbmPersona {
-    private $conexion;
+ 
+
 
     public function __construct() {
-        try {
-            $this->conexion = new PDO("mysql:host=localhost;dbname=infoautos", "root", "");
-            $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("Error en la conexión a la base de datos: " . $e->getMessage());
-        }
     }
 
      //Obtener todas las personas
      public function obtenerTodasLasPersonas() {
-        $query = "SELECT * FROM persona";
-        $stmt = $this->conexion->query($query);
-        
-        $personas = array();
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $persona = new Persona();
-            $persona->setDni($row['nroDni']);
-            $persona->setNombre($row['nombre']);
-            $persona->setApellido($row['apellido']);
-            $persona->setFechaNac($row['fechaNac']);
-            $persona->setTelefono($row['telefono']);
-            $persona->setDomicilio($row['domicilio']);
-            $personas[] = $persona;
-        }
-
+        $personas = Persona::listar();
         return $personas;
      }
 
    
      // Obtener persona por dni
      public function obtenerDatosPersona($dni) {
-        $query = "SELECT * FROM persona WHERE nroDni = :nroDni";
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(':nroDni', $dni);
-        $stmt->execute();
-
-        if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $persona = new Persona();
-            $persona->setDni($row['nroDni']);
-            $persona->setNombre($row['nombre']);
-            $persona->setApellido($row['apellido']);
-            $persona->setFechaNac($row['fechaNac']);
-            $persona->setTelefono($row['telefono']);
-            $persona->setDomicilio($row['domicilio']);
-            return $persona;
+        $personas = Persona::listar("nroDni = '" . $dni . "'");
+        $salida = "";
+        if (count($personas) > 0) {
+            $salida = $personas[0];
         } else {
-            return null; 
+            $salida = null;
         }
+        return $salida;
     }
 
 

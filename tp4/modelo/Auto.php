@@ -1,4 +1,5 @@
 <?php
+
 class Auto {
 
     private $patente;
@@ -85,7 +86,7 @@ class Auto {
     public function insertar(){
         $resp = false;
         $base = new BaseDatos();
-        $sql="INSERT INTO tabla(patente, marca, modelo, dniDuenio)  VALUES (".$this->getPatente().",'".$this->getMarca()."','".$this->getModelo()."','".$this->getDniDuenio()."')";
+        $sql="INSERT INTO auto(patente, marca, modelo, dniDuenio)  VALUES ('".$this->getPatente()."','".$this->getMarca()."','".$this->getModelo()."','".$this->getDniDuenio()."')";
         if ($base->Iniciar()) {
             if ($patente = $base->Ejecutar($sql)) {
                 $this->setPatente($patente);

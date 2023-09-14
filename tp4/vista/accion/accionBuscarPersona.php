@@ -9,6 +9,7 @@
     <h1>Buscar y Actualizar Persona</h1>
 
     <?php
+    require_once('../../modelo/conector/BaseDatos.php');
     require_once("../../utils/functions.php");
     require_once('../../modelo/Auto.php');
     require_once('../../modelo/Persona.php');
