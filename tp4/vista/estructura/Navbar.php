@@ -29,7 +29,7 @@
 
     //Menu autos
     $navbar .= <<<SUBMENUAUTO
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" data-bs-theme="dark">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Menu Autos
           </a>
@@ -38,8 +38,8 @@
 
     foreach($menuAuto as $item){
         $navbar .= <<<MENUAUTOS
-            <li><a class="dropdown-item" href="#">
-            <a class="dropdown-item" href="{$item['link']}">{$item['nombre']}</a>
+            <li>
+            <a class="dropdown-item text-white" href="{$item['link']}">{$item['nombre']}</a>
             </li>
             MENUAUTOS;
     }
@@ -47,7 +47,7 @@
 
     //Menu personas
     $navbar .= <<<SUBMENUPERSONA
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" data-bs-theme="dark">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Menu Personas
           </a>
@@ -56,8 +56,8 @@
 
     foreach($menuPersona as $item){
         $navbar .= <<<MENUPERSONAS
-            <li><a class="dropdown-item" href="#">
-            <a class="dropdown-item" href="{$item['link']}">{$item['nombre']}</a>
+            <li>
+            <a class="dropdown-item text-white" href="{$item['link']}">{$item['nombre']}</a>
             </li>
             MENUPERSONAS;
     }
@@ -80,4 +80,4 @@
     </div>
 
 </nav>
-<div class="linea "> </div>
+<!--<div class="linea "> </div> -->

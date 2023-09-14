@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/styles.css">
     <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
-
+<link rel="stylesheet" href="./css/inicio.css">
      
 </head>
 <body class="bg-dark">
@@ -14,6 +14,7 @@
     include_once("./estructura/Navbar.php");
 ?>
 
+<main class="container-fluid cont container text-center text-light">
     <h1>Lista de Autos</h1>
 
     <?php
@@ -32,27 +33,34 @@
 
     // Verifica si hay autos cargados
     if (count($autos) > 0) {
-        echo '<table>';
-        echo '<tr><th>Patente</th><th>Marca</th><th>Modelo</th><th>Dueño</th></tr>';
+        $salida = <<<TABLA
+        <table class="table table-dark">
+        <tr><th>Patente</th><th>Marca</th><th>Modelo</th><th>Dueño</th></tr>
+        TABLA;
         
         // Itera a través de la lista de autos y muestra los datos
         foreach ($autos as $auto) {
-            $dueño = $abmPersona->obtenerDatosPersona($auto->getDniDuenio());
-            
-            echo '<tr>';
-            echo '<td>' . $auto->getPatente() . '</td>';
-            echo '<td>' . $auto->getMarca() . '</td>';
-            echo '<td>' . $auto->getModelo() . '</td>';
-            echo '<td>' . $dueño->getNombre() . ' ' . $dueño->getApellido() . '</td>';
-            echo '</tr>';
+            $duenio = $abmPersona->obtenerDatosPersona($auto->getDniDuenio());
+            $salida.= <<<FILA
+            <tr>
+            <td> {$auto->getPatente()} </td>
+            <td> {$auto->getMarca()} </td>
+            <td> {$auto->getModelo()} </td>
+            <td> {$duenio->getNombre()}  {$duenio->getApellido()} </td>
+            </tr>
+            FILA;
         }
         
-        echo '</table>';
+        $salida.= "</table>";
     } else {
-        echo '<p>No hay autos cargados.</p>';
+        $salida = "<p>No hay autos cargados.</p>";
     }
+
+    echo $salida;
     ?>
 
+</main>
+<div class="contenedor"></div>
 <?php
     include_once("./estructura/Footer.php");
 ?>

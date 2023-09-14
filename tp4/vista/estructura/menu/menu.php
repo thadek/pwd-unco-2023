@@ -14,6 +14,7 @@ $menuAuto = [
 ];
 
 $menuPersona =[
+    ["nombre" => "Listar Personas", "link" => "./listaPersonas.php"],
     ["nombre" => "Agregar Persona", "link" => "./agregarPersona.php"],
     ["nombre" => "Modificar Persona", "link" => "./modificarPersona.php"],
     ["nombre" => "Eliminar Persona", "link" => "./eliminarPersona.php"],
