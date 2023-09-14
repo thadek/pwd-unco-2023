@@ -104,7 +104,7 @@ class Auto {
         $resp = false;
         $base = new BaseDatos();
         $sql = "UPDATE auto SET marca = '".$this->getMarca()."',modelo='".$this->getModelo()."',
-        dniDuenio='".$this->getDniDuenio()."' WHERE patente=". $this->getPatente();
+        dniDuenio='".$this->getDniDuenio()."' WHERE patente='". $this->getPatente()."'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;

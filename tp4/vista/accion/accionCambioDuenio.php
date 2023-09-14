@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 require_once("../../../configuracion.php");
+=======
+ require_once("../../../configuracion.php");
+>>>>>>> dda33f0aa26784c7b13fc5777bd73fce959eb952
 $datos = darDatosSubmitted();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $patente = $datos['patente'];

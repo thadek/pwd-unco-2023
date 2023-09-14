@@ -2,6 +2,11 @@
 <html>
 <head>
     <title>Autos de Persona</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/inicio.css">
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <h1>Autos de Persona</h1>
