@@ -54,15 +54,11 @@ class AbmPersona {
         $salida = "";
     
         // Verifica si la persona existe en la base de datos
-<<<<<<< HEAD
         $abmPersona = new AbmPersona();
         $persona = new Persona();
         $persona->cargar($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio);
     
         if (!($abmPersona->obtenerDatosPersona($nroDni) === null)) {
-=======
-        if (!($this->obtenerDatosPersona($persona->getNroDni()) === null)) {
->>>>>>> ee53c5c48b4036e2373d7d65a4e2ab7c670457d6
             try {
                 $persona->modificar();
                 $salida = "Persona modificada con éxito.";
