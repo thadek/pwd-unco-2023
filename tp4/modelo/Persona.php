@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Persona{
     private $nroDni;
     private $apellido;
@@ -183,7 +185,7 @@ class Persona{
                 
                 while ($row = $base->Registro()){
                     $obj= new Persona();
-                    $obj->cargar($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domilicio']);
+                    $obj->cargar($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio']);
                     array_push($arreglo, $obj);
                 }
                

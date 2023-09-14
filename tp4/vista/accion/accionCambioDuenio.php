@@ -1,9 +1,5 @@
 <?php
-require_once("../../utils/functions.php");
-require_once('../../modelo/Auto.php');
-require_once('../../modelo/Persona.php');
-require_once('../../control/AbmAuto.php');
-require_once('../../control/AbmPersona.php');
+ require_once("../../../configuracion.php");
 $datos = darDatosSubmitted();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $patente = $datos['patente'];
