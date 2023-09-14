@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <html>
+<?php
+ require_once("../../../configuracion.php");
+ include_once("../../estructura/menu/menu.php");
+?>
 <head>
     <title>Resultado de la Búsqueda</title>
-    
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/inicio.css">
+
 </head>
-<body>
+
+<body class="bg-dark">
+    <?php
+    $rutalogo = "../img/";
+    include_once("../../estructura/Navbar.php");
+    ?>
+
+    <main class="container-fluid cont container text-light">
+
+    
     <h1>Resultado de la Búsqueda</h1>
 
     <?php
-    require_once("../../utils/functions.php");
-    require_once('../../modelo/Auto.php');
-    require_once('../../modelo/Persona.php');
-    require_once('../../control/AbmAuto.php');
-    require_once('../../control/AbmPersona.php');
-    
-    
-
+   
     $datos = darDatosSubmitted();
-    if (isset($_POST['patente'])) {
+
+
+    if (isset($datos['patente'])) {
         $patente = $datos['patente'];
 
-        
+
         $abmAuto = new AbmAuto();
         $abmPersona = new AbmPersona();
 
-        
+
         $auto = $abmAuto->obtenerDatosAuto($patente);
 
-        
+
         if ($auto !== null) {
-            $dueño = $abmPersona->obtenerDatosPersona($auto->getDniDuenio());
-            echo '<table>';
-            echo '<tr><th>Patente</th><th>Marca</th><th>Modelo</th><th>Dueño</th></tr>';
-            echo '<tr>';
-            echo '<td>' . $auto->getPatente() . '</td>';
-            echo '<td>' . $auto->getMarca() . '</td>';
-            echo '<td>' . $auto->getModelo() . '</td>';
-            echo '<td>' . $dueño->getNombre() . ' ' . $dueño->getApellido() . '</td>';
-            echo '</tr>';
-            echo '</table>';
+            $duenio = $abmPersona->obtenerDatosPersona($auto->getDniDuenio());
+            $salida = <<<TABLA
+            <table class="table table-dark">
+            <tr><th>Patente</th><th>Marca</th><th>Modelo</th><th>Dueño</th></tr>
+            <tr>
+            <td>{$auto->getPatente()}</td>
+            <td>{$auto->getMarca()}</td>
+            <td>{$auto->getModelo()}</td>
+            <td>{$duenio->getNombre()}  {$duenio->getApellido()}</td>
+            </tr>
+            </table>
+            TABLA;
+           
         } else {
-            echo '<p>No se encontró ningún auto con la patente ingresada.</p>';
+            $salida = "<p>No se encontró ningún auto con la patente ingresada.</p>";
         }
     } else {
-        echo '<p>No se proporcionó una patente válida.</p>';
+        $salida = "<p>No se proporcionó una patente válida.</p>";
     }
+
+    echo $salida;
     ?>
 
+</main>
+
+
+<?php
+    include_once("../../estructura/Footer.php");
+    ?>
+
+
+
 </body>
+
 </html>

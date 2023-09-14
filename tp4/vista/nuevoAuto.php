@@ -4,8 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Auto</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/inicio.css">
+    <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
+<body class="bg-dark">
+<?php
+    $rutalogo = "./img/";
+    include_once("../estructura/menu/menu.php");
+    include_once("../estructura/Navbar.php");
+?>
+
+<main class="container-fluid cont container text-light">
     <h1>Registrar Nuevo Auto</h1>
     <form action="accion/accionNuevoAuto.php" method="post">
         <label for="patente">Número de Patente:</label>
@@ -22,5 +33,9 @@
 
         <input type="submit" value="Registrar Auto">
     </form>
+</main>
+<div class="contenedor">
+</div>
+<?php include_once("../estructura/Footer.php"); ?>
 </body>
 </html>
