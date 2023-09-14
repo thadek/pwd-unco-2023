@@ -23,91 +23,18 @@
 <form action="accion/accionNuevoAuto.php" method="post" id="autoForm">
     <div class="form-group">
         <label for="patente">Número de Patente:</label>
-        <input type="text" id="patente" name="patente" required><br><br>
+        <input type="text" id="patente" name="patente" ><br><br>
         
         <label for="marca">Marca:</label>
-        <input type="text" id="marca" name="marca" required><br><br>
+        <input type="text" id="marca" name="marca" ><br><br>
         
         <label for="modelo">Modelo:</label>
-        <input type="text" id="modelo" name="modelo" required><br><br>
+        <input type="text" id="modelo" name="modelo" ><br><br>
 
         <label for="dniDuenio">DNI del Dueño:</label>
-        <input type="text" id="dniDuenio" name="dniDuenio" required><br><br>
+        <input type="text" id="dniDuenio" name="dniDuenio" ><br><br>
 
-    <input type="submit" value="Registrar Auto">
-</form>
-</main>
-<div class="contenedor">
-</div>
-<?php include_once("../estructura/Footer.php"); ?>
-
-<script>
-    $(document).ready(function() {
-        // Función para validar el DNI del dueño
-        function validarDNI(dni) {
-            return /^\d{8}$/.test(dni);
-        }
-
-        // Función para validar la patente
-        function validarPatente(patente) {
-            return /^[A-Z]{3}\s\d{3}$/.test(patente);
-        }
-
-        // Función para aplicar estilos y mostrar mensajes de error
-        function aplicarEstilosYMensaje(elemento, valido, mensaje) {
-            var errorSpan = elemento.next('.error-message');
-            if (valido) {
-                elemento.removeClass('error').addClass('success');
-                errorSpan.text("");
-            } else {
-                elemento.removeClass('success').addClass('error');
-                errorSpan.text(mensaje);
-            }
-        }
-
-        // Validación al enviar el formulario
-        $('#autoForm').submit(function(event) {
-            var patenteInput = $('#patente');
-            var dniDuenioInput = $('#dniDuenio');
-            var modeloInput = $('#modelo');
-            var marcaInput = $('#marca');
-            
-            var patenteValida = validarPatente(patenteInput.val());
-            var dniValido = validarDNI(dniDuenioInput.val());
-            var modeloNoVacio = modeloInput.val().trim() !== "";
-            var marcaNoVacia = marcaInput.val().trim() !== "";
-
-            aplicarEstilosYMensaje(patenteInput, patenteValida, "Patente no válida. (ejemplo: ABC 123)");
-            aplicarEstilosYMensaje(dniDuenioInput, dniValido, "DNI no válido.");
-            
-            // Validar y aplicar estilos a los campos modelo y marca
-            aplicarEstilosYMensaje(modeloInput, modeloNoVacio, "Campo requerido.");
-            aplicarEstilosYMensaje(marcaInput, marcaNoVacia, "Campo requerido.");
-
-            if (!patenteValida || !dniValido || !modeloNoVacio || !marcaNoVacia) {
-                event.preventDefault(); // Evitar el envío del formulario si no es válido
-            }
-        });
-
-        // Aplicar estilos y mensajes cuando se cambian los valores de los campos
-        $('#patente').on('input', function() {
-            aplicarEstilosYMensaje($(this), validarPatente($(this).val()), "Patente no válida. (ejemplo: ABC 123)");
-        });
-
-        $('#dniDuenio').on('input', function() {
-            aplicarEstilosYMensaje($(this), validarDNI($(this).val()), "DNI no válido.");
-        });
-
-        // Validar y aplicar estilos cuando se cambia el valor del campo modelo
-        $('#modelo').on('input', function() {
-            aplicarEstilosYMensaje($(this), $(this).val().trim() !== "", "Campo requerido.");
-        });
-
-        // Validar y aplicar estilos cuando se cambia el valor del campo marca
-        $('#marca').on('input', function() {
-            aplicarEstilosYMensaje($(this), $(this).val().trim() !== "", "Campo requerido.");
-        });
-    });
-</script>
+        <input type="submit" value="Registrar Auto">
+    </form>
 </body>
 </html>
