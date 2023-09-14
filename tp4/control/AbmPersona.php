@@ -6,19 +6,19 @@ class AbmPersona {
  
 
 
-    public function __construct() {
+    public function __construct(){
     }
 
-     //Obtener todas las personas
-     public function obtenerTodasLasPersonas() {
+    //Obtener todas las personas
+    public function obtenerTodasLasPersonas() {
         $personas = Persona::listar();
         return $personas;
-     }
+    }
 
    
-     // Obtener persona por dni
-     public function obtenerDatosPersona($dni) {
-        $personas = Persona::listar("nroDni = '" . $dni . "'");
+    // Obtener persona por dni
+    public function obtenerDatosPersona($nroDni) {
+        $personas = Persona::listar("nroDni = '" . $nroDni . "'");
         $salida = "";
         if (count($personas) > 0) {
             $salida = $personas[0];
@@ -28,62 +28,42 @@ class AbmPersona {
         return $salida;
     }
 
-
-
     public function agregarNuevaPersona($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio) {
-
-        if ($this->obtenerDatosPersona($nroDni) !== null) {
-            return "La persona ya está registrada.";
+        $salida = "";
+        if (!($this->obtenerDatosPersona($nroDni) !== null)) {
+            try {
+                $objPersona = new Persona();
+                $objPersona->setDni($nroDni);
+                $objPersona->setApellido($apellido);
+                $objPersona->setNombre($nombre);
+                $objPersona->setFechaNac($fechaNac);
+                $objPersona->setTelefono($telefono);
+                $objPersona->setDomicilio($domicilio);
+                $objPersona->insertar();
+                $salida = "Persona registrada con éxito.";
+            } catch (PDOException $e) {
+                $salida = "Error al registrar la persona: " . $e->getMessage();
+            }
+        } else {
+            $salida = "La persona ya está registrada.";
         }
-
-        
-        // Si la persona no existe, realizar la inserción en la base de datos
-        $query = "INSERT INTO persona (nroDni, apellido, nombre, fechaNac, telefono, domicilio) 
-        VALUES (:nroDni, :apellido, :nombre, :fechaNac, :telefono, :domicilio)";
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(':nroDni', $nroDni);
-        $stmt->bindParam(':apellido', $apellido);
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':fechaNac', $fechaNac);
-        $stmt->bindParam(':telefono', $telefono);
-        $stmt->bindParam(':domicilio', $domicilio);
-
-        try {
-            $stmt->execute();
-            return "Persona registrada con éxito.";
-        } catch (PDOException $e) {
-            return "Error al registrar la persona: " . $e->getMessage();
-        }
+        return $salida;
     }
 
-    public function modificarDatosPersona($nroDni, $nombre, $apellido, $fechaNac, $telefono, $domicilio) {
-        
-        if ($this->obtenerDatosPersona($nroDni) === null) {
-            return "La persona no existe en la base de datos.";
+    public function modificarDatosPersona($persona) {
+        $salida = "";
+        // Verifica si la persona existe en la base de datos
+        if (!($this->obtenerDatosPersona($persona->getDni()) === null)) {
+            try {
+                $persona->modificar();
+                $salida = "persona modificada con éxito.";
+            } catch (PDOException $e) {
+                $salida = "Error al modificar la persona: " . $e->getMessage();
+            }
+        }else{
+            $salida = "La persona no existe en la base de datos.";
         }
-    
-        // Actualiza los datos de la persona en la base de datos
-        $query = "UPDATE persona 
-                  SET nombre = :nombre, 
-                      apellido = :apellido, 
-                      fechaNac = :fechaNac, 
-                      telefono = :telefono, 
-                      domicilio = :domicilio 
-                  WHERE nroDni = :nroDni";
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(':nroDni', $nroDni);
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':apellido', $apellido);
-        $stmt->bindParam(':fechaNac', $fechaNac);
-        $stmt->bindParam(':telefono', $telefono);
-        $stmt->bindParam(':domicilio', $domicilio);
-    
-        try {
-            $stmt->execute();
-            return "Persona actualizada con éxito.";
-        } catch (PDOException $e) {
-            return "Error al actualizar los datos de la persona: " . $e->getMessage();
-        }
+        return $salida; 
     }
 
 }
