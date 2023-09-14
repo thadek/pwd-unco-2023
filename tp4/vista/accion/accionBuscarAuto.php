@@ -2,7 +2,7 @@
 <html>
 <?php
  require_once("../../../configuracion.php");
- include_once("../../estructura/menu/menu.php");
+ include_once("../../estructura/menu/menu_accion.php");
 ?>
 <head>
     <title>Resultado de la Búsqueda</title>

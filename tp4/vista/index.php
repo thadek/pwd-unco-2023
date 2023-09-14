@@ -14,6 +14,7 @@
 <body class=" bg-dark  ">
 
     <?php
+    require_once("../../configuracion.php");
     $rutalogo = "./img/";
     include_once("../estructura/menu/menu.php");
     include_once("../estructura/Navbar.php");
@@ -36,11 +37,6 @@
 
 
     <div class="contenedor">
-
-
-
-
-
     </div>
 
 

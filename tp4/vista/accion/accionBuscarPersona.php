@@ -14,7 +14,7 @@
     <?php
     require_once("../../../configuracion.php");
     $rutalogo = "../img/";
-    include_once("../../estructura/menu/menu.php");
+    include_once("../../estructura/menu/menu_accion.php");
     include_once("../../estructura/Navbar.php");
     ?>
 
