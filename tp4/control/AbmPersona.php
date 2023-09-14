@@ -33,7 +33,7 @@ class AbmPersona {
         if (!($this->obtenerDatosPersona($nroDni) !== null)) {
             try {
                 $objPersona = new Persona();
-                $objPersona->setDni($nroDni);
+                $objPersona->setNroDni($nroDni);
                 $objPersona->setApellido($apellido);
                 $objPersona->setNombre($nombre);
                 $objPersona->setFechaNac($fechaNac);
@@ -53,7 +53,7 @@ class AbmPersona {
     public function modificarDatosPersona($persona) {
         $salida = "";
         // Verifica si la persona existe en la base de datos
-        if (!($this->obtenerDatosPersona($persona->getDni()) === null)) {
+        if (!($this->obtenerDatosPersona($persona->getNroDni()) === null)) {
             try {
                 $persona->modificar();
                 $salida = "persona modificada con éxito.";

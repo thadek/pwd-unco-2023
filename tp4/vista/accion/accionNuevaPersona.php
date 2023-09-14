@@ -18,12 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $datos["nombre"];
     $apellido = $datos["apellido"];
     $fechaNac = $datos["fechaNac"];
+
+    $fechaSql = date('Y-m-d', strtotime(str_replace('/', '-', $fechaNac)));
+
     $telefono = $datos["telefono"];
     $domicilio = $datos["domicilio"];
 
     // Realiza las validaciones necesarias, por ejemplo, si el DNI ya existe en la base de datos
     $abmPersona = new AbmPersona();
-    $resultado = $abmPersona->agregarNuevaPersona($nroDni, $nombre, $apellido, $fechaNac, $telefono, $domicilio);
+    $resultado = $abmPersona->agregarNuevaPersona($nroDni, $nombre, $apellido, $fechaSql, $telefono, $domicilio);
 
     if (strpos($resultado, "registrada con éxito") !== false) {
         // Éxito: la persona se registró correctamente
