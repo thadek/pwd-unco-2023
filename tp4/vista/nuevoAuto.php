@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
@@ -8,7 +7,8 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/inicio.css">
-    <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/validacion.css">
+    <script src="js/jquery.js"></script>
 </head>
 
 <body class="bg-dark">
@@ -47,6 +47,81 @@
     <div class="contenedor">
     </div>
     <?php include_once("../estructura/Footer.php"); ?>
+    
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+        // Función para validar el DNI del dueño
+        function validarDNI(dni) {
+            return /^\d{8}$/.test(dni);
+        }
+
+        // Función para validar la patente
+        function validarPatente(patente) {
+            return /^[A-Z]{3}\s\d{3}$/.test(patente);
+        }
+
+        // Función para validar que el modelo sea numérico
+        function validarModelo(modelo) {
+            return /^\d+$/.test(modelo);
+        }
+
+        // Función para aplicar estilos y mostrar mensajes de error
+        function aplicarEstilosYMensaje(elemento, valido, mensaje) {
+            var errorSpan = elemento.next('.error-message');
+            if (valido) {
+                elemento.removeClass('error').addClass('success');
+                errorSpan.text("");
+            } else {
+                elemento.removeClass('success').addClass('error');
+                errorSpan.text(mensaje);
+            }
+        }
+
+        // Validación al enviar el formulario
+        $('#autoForm').submit(function(event) {
+            var patenteInput = $('#patente');
+            var dniDuenioInput = $('#dniDuenio');
+            var modeloInput = $('#modelo');
+            var marcaInput = $('#marca');
+
+            var patenteValida = validarPatente(patenteInput.val());
+            var dniValido = validarDNI(dniDuenioInput.val());
+            var modeloValido = validarModelo(modeloInput.val());
+            var marcaNoVacia = marcaInput.val().trim() !== "";
+
+            aplicarEstilosYMensaje(patenteInput, patenteValida, "Patente no válida.");
+            aplicarEstilosYMensaje(dniDuenioInput, dniValido, "DNI no válido.");
+            aplicarEstilosYMensaje(modeloInput, modeloValido, "Modelo requerido.");
+            
+            // Validar y aplicar estilos a los campos marca
+            aplicarEstilosYMensaje(marcaInput, marcaNoVacia, "Campo requerido.");
+
+            if (!patenteValida || !dniValido || !modeloValido || !marcaNoVacia) {
+                event.preventDefault(); // Evitar el envío del formulario si no es válido
+            }
+        });
+
+        // Aplicar estilos y mensajes cuando se cambian los valores de los campos
+        $('#patente').on('input', function() {
+            aplicarEstilosYMensaje($(this), validarPatente($(this).val()), "Patente no válida.");
+        });
+
+        $('#dniDuenio').on('input', function() {
+            aplicarEstilosYMensaje($(this), validarDNI($(this).val()), "DNI no válido.");
+        });
+
+        // Validar y aplicar estilos cuando se cambia el valor del campo modelo
+        $('#modelo').on('input', function() {
+            aplicarEstilosYMensaje($(this), validarModelo($(this).val()), "Modelo (año).");
+        });
+
+        // Validar y aplicar estilos cuando se cambia el valor del campo marca
+        $('#marca').on('input', function() {
+            aplicarEstilosYMensaje($(this), $(this).val().trim() !== "", "Campo requerido.");
+        });
+    });
+    </script>
 </body>
 
 </html>
