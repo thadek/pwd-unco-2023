@@ -13,7 +13,7 @@
 
 
 ## Información sobre carpetas
- **Los directorios tp1,tp2,tp3 contienen las entregas correspondientes.**
+ **Los directorios tp1,tp2,tp3, tp4 contienen las entregas correspondientes.**
  El directorio dif_versiones_tps contiene diferentes versiones no entregables realizadas por nuestros integrantes a lo largo de la semana.
 
 
