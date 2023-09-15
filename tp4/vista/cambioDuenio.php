@@ -62,42 +62,53 @@
 
 
     <script>
-        $(document).ready(function() {
-            // Al cargar la página, eliminamos las clases de error y los mensajes de error
-            $("form input").removeClass("error");
-            $("span.error-message").remove();
+    $(document).ready(function() {
+    // Al cargar la página, eliminamos las clases de error y los mensajes de error
+    $("form input").removeClass("error");
+    $("span.error-message").remove();
 
-            // Al enviar el formulario, realizamos la validación
-            $("#cambioDueñoForm").submit(function(event) {
-                // Eliminamos las clases de error y los mensajes de error previos
-                $("form input").removeClass("error");
-                $("span.error-message").remove();
+    // Al enviar el formulario, realizamos la validación
+    $("#cambioDueñoForm").submit(function(event) {
+        // Eliminamos las clases de error y los mensajes de error previos
+        $("form input").removeClass("error");
+        $("span.error-message").remove();
 
-                // Validación del campo de Patente (puede personalizar su propia lógica de validación)
-                var patente = $("#patente").val().trim();
-                if (patente === "") {
-                    $("#patente").addClass("error");
-                    $("#patente").after('<span class="error-message">Este campo es requerido.</span>');
-                }
+        // Validación del campo de Patente
+        var patente = $("#patente").val().trim();
+        var patentePattern = /^[A-Z]{3}\s\d{3}$/; // Expresión regular para el formato "AAA 111" con letras mayúsculas
+        if (patente === "") {
+            $("#patente").addClass("error");
+            $("#patente").after('<span class="error-message">Este campo es requerido.</span>');
+        } else if (!patentePattern.test(patente) || !patente.match(/^[A-Z\s]+$/)) {
+            $("#patente").addClass("error");
+            $("#patente").after('<span class="error-message">Ingrese una patente válida en formato "AAA 111".</span>');
+        }
 
-                // Validación del campo de NroDNI
-                var nroDni = $("#nroDni").val().trim();
-                if (nroDni === "") {
-                    $("#nroDni").addClass("error");
-                    $("#nroDni").after('<span class="error-message">Este campo es requerido.</span>');
-                } else if (!/^\d+$/.test(nroDni) || nroDni.length !== 8) {
-                    $("#nroDni").addClass("error");
-                    $("#nroDni").after('<span class="error-message">Ingrese un DNI válido de 8 dígitos.</span>');
-                } else {
-                    // Si no hay errores en el campo de NroDNI, podemos continuar con el envío del formulario
-                    return true;
-                }
+        // Validación del campo de NroDNI
+        var nroDni = $("#nroDni").val().trim();
+        if (nroDni === "") {
+            $("#nroDni").addClass("error");
+            $("#nroDni").after('<span class="error-message">Este campo es requerido.</span>');
+        } else if (!/^\d+$/.test(nroDni) || nroDni.length !== 8) {
+            $("#nroDni").addClass("error");
+            $("#nroDni").after('<span class="error-message">Ingrese un DNI válido de 8 dígitos.</span>');
+        } else {
+            // Si no hay errores en el campo de NroDNI y Patente, podemos continuar con el envío del formulario
+            return true;
+        }
 
-                // Evita el envío del formulario si hay errores
-                event.preventDefault();
-            });
-        });
-    </script>
+        // Evita el envío del formulario si hay errores
+        event.preventDefault();
+    });
+});
+</script>
+Con esta actualización, hemos agregado una verificación adicional para asegurarnos de que la patente solo contenga letras mayúsculas y espacios. Ahora, el formulario no se enviará si se ingresan letras minúsculas en el campo de patente.
+
+
+
+
+
+
 </body>
 
 </html>
