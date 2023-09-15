@@ -78,7 +78,14 @@
         let telefono = parseInt(document.getElementById('telefono').value);
         let domicilio = document.getElementById('domicilio').value;
 
-        if (isNaN(dni)) {
+        // Función para validar el DNI del dueño
+        function validarDNI(dni) {
+            return /^\d{8}$/.test(dni);
+        }
+
+
+
+        if (isNaN(dni) || !validarDNI(dni)) {
             document.getElementById('nroDni').style.border = "1px solid red";
             document.getElementById('pDni').style.color = "red"
             document.getElementById('pDni').innerHTML = 'Ingrese un DNI valido';

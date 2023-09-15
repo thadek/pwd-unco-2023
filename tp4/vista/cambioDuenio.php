@@ -41,7 +41,7 @@
                     </div>
                     <div class="col d-flex text-center flex-column align-items-center justify-content-center ">
                     
-                    <form id="cambioDueñoForm" class="d-flex flex-column gap-3" method="post" action="accion/accionCambioDuenio.php" style="width:60%;">
+                    <form id="cambioDuenioForm" class="d-flex flex-column gap-3" method="post" action="accion/accionCambioDuenio.php" style="width:60%;">
                     <h4>Cambio de Dueño de Auto</h4>
                             <input class="form-control p-3 " type="text" placeholder="Código de patente" id="patente" name="patente">
                             <span id="patenteMessage"></span>
@@ -67,38 +67,50 @@
     $("form input").removeClass("error");
     $("span.error-message").remove();
 
+    let error = false;
+
     // Al enviar el formulario, realizamos la validación
-    $("#cambioDueñoForm").submit(function(event) {
+    $("#cambioDuenioForm").submit(function(event) {
         // Eliminamos las clases de error y los mensajes de error previos
         $("form input").removeClass("error");
         $("span.error-message").remove();
 
         // Validación del campo de Patente
-        var patente = $("#patente").val().trim();
-        var patentePattern = /^[A-Z]{3}\s\d{3}$/; // Expresión regular para el formato "AAA 111" con letras mayúsculas
+        const patente = $("#patente").val().trim();
+        const patentePattern = /^[A-Z]{3}\s\d{3}$/; // Expresión regular para el formato "AAA 111" con letras mayúsculas
         if (patente === "") {
             $("#patente").addClass("error");
+            error = true;
             $("#patente").after('<span class="error-message">Este campo es requerido.</span>');
-        } else if (!patentePattern.test(patente) || !patente.match(/^[A-Z\s]+$/)) {
+        } else if (!patentePattern.test(patente) || !patente.match(/^[A-Za-z]{3} \d{3}$/)) {
             $("#patente").addClass("error");
+            error = true;
             $("#patente").after('<span class="error-message">Ingrese una patente válida en formato "AAA 111".</span>');
+        }else{
+            // Si la patente es válida, la convertimos a mayúsculas
+            $("#patente").val(patente.toUpperCase());
+            error=false;
         }
 
         // Validación del campo de NroDNI
-        var nroDni = $("#nroDni").val().trim();
+        const nroDni = $("#nroDni").val().trim();
         if (nroDni === "") {
+            error = true;
             $("#nroDni").addClass("error");
             $("#nroDni").after('<span class="error-message">Este campo es requerido.</span>');
         } else if (!/^\d+$/.test(nroDni) || nroDni.length !== 8) {
             $("#nroDni").addClass("error");
+            error = true;
             $("#nroDni").after('<span class="error-message">Ingrese un DNI válido de 8 dígitos.</span>');
-        } else {
-            // Si no hay errores en el campo de NroDNI y Patente, podemos continuar con el envío del formulario
-            return true;
-        }
+        } 
 
         // Evita el envío del formulario si hay errores
-        event.preventDefault();
+        if (error){
+            event.preventDefault();
+        }else{
+            return true;
+        }
+        
     });
 });
 </script>

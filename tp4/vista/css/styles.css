@@ -81,6 +81,13 @@ footer{
   border-radius: 5px 0 0 5px;
 }
 
+.img-autosAbs{
+  background:url("../img/patentes.png"); 
+  background-size:cover;
+  height:100%;
+  border-radius: 5px 0 0 5px;
+}
+
 .img-personas{
   background:url("../img/personas.png"); 
   background-size:cover;
@@ -103,3 +110,4 @@ footer{
 .card{
   background:transparent;
 }
+

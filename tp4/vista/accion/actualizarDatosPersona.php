@@ -21,8 +21,8 @@
 <main class="container-fluid cont container text-light">
 
     <div class="card col-12 text-center" data-bs-theme="dark">
-        <h2>Actualizar Datos de Persona</h2>
-        <div class="container text-center">
+        <h2 class="p-3">Actualizar Datos de Persona</h2>
+        <div class="container text-center p-5">
                 <?php
 
                 $datos = darDatosSubmitted();
