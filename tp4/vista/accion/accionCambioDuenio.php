@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<?php
-
-
- require_once("../../../configuracion.php");
-$datos = darDatosSubmitted();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $patente = $datos['patente'];
-    $dni = $datos['nroDni'];
-=======
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="bg-dark">
     <?php
->>>>>>> 7e9e82df0a1beaa1e482ac7b193d1b114fd4cc67
 
     require_once("../../../configuracion.php");
     $rutalogo = "../img/";

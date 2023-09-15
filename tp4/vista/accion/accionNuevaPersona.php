@@ -10,28 +10,6 @@
 </head>
 <body class="bg-dark">
     <?php
-<<<<<<< HEAD
- 
-
- require_once("../../../configuracion.php");
-
-$datos = darDatosSubmitted();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $nroDni = $datos["nroDni"];
-    $nombre = $datos["nombre"];
-    $apellido = $datos["apellido"];
-    $fechaNac = $datos["fechaNac"];
-
-    $fechaSql = date('Y-m-d', strtotime(str_replace('/', '-', $fechaNac)));
-
-    $telefono = $datos["telefono"];
-    $domicilio = $datos["domicilio"];
-
-    // Realiza las validaciones necesarias, por ejemplo, si el DNI ya existe en la base de datos
-    $abmPersona = new AbmPersona();
-    $resultado = $abmPersona->agregarNuevaPersona($nroDni, $nombre, $apellido, $fechaSql, $telefono, $domicilio);
-=======
 
     require_once("../../../configuracion.php");
     $rutalogo = "../img/";
@@ -41,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
 <main class="container-fluid cont container text-light">
->>>>>>> 7e9e82df0a1beaa1e482ac7b193d1b114fd4cc67
 
     <div class="card col-12 text-center" data-bs-theme="dark">
         <h2>Resultado Nueva Persona</h2>
