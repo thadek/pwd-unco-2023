@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-<?php
- 
-
- require_once("../../../configuracion.php");
-=======
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +10,6 @@
 </head>
 <body class="bg-dark">
     <?php
->>>>>>> 7e9e82df0a1beaa1e482ac7b193d1b114fd4cc67
 
     require_once("../../../configuracion.php");
     $rutalogo = "../img/";
