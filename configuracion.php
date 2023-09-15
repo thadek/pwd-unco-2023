@@ -12,7 +12,7 @@ $PROYECTO = 'pwd/pwd-unco-2023';
 //variable que almacena el directorio del proyecto
 $ROOT = $_SERVER['DOCUMENT_ROOT'] . "/$PROYECTO/";
 
-include_once($ROOT . '/tp4/utils/functions.php');
+include_once ($ROOT . 'tp4/utils/functions.php');
 
 // Variable que define la pagina de autenticacion del proyecto
 $INICIO = "Location:http://" . $_SERVER['HTTP_HOST'] . "/$PROYECTO/vista/login/login.php";
