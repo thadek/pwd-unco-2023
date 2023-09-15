@@ -26,10 +26,8 @@ require("../../configuracion.php");
     <div class="card col-12 text-center" data-bs-theme="dark">
     <div class="container text-center">
     <div class="row">
-                    <div class="col col-sinp">
-                        <div class="img-autosAbs "></div>
-                    </div>
-                    <div class="col d-flex text-center flex-column align-items-center justify-content-center p-5 gap-2">
+                    
+                    <div class="col-md-12 d-flex text-center flex-column align-items-center justify-content-center p-5 gap-2">
     <h3>Visualizar datos</h4>
         <?php
 
@@ -49,8 +47,8 @@ require("../../configuracion.php");
                 <div class="card p-3">
                 <h5 class="card-title"><i class="bi bi-info-circle"></i>
                 Datos de la Persona</h2>
-                <div class="row  ">
-                <div class="col  d-flex flex-column gap-3">
+                <div class="row d-flex ">
+                <div class="col-md-12 col-xl-6  d-flex flex-column gap-3">
 
                 <div class="form-floating">
                 <input type="text" disabled class="form-control" id="floatingInputGrid1"  value="{$persona->getNroDni()}">
@@ -68,7 +66,7 @@ require("../../configuracion.php");
               
                 
                 </div>
-                <div class="col d-flex flex-column gap-3">
+                <div class="col-md-12 col-xl-6 d-flex flex-column gap-3">
 
                 <div class="form-floating">
                 <input type="text" disabled class="form-control" id="floatingInputGrid4"  value="{$persona->getFechaNac()}">

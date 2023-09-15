@@ -7,13 +7,13 @@
   .contenedor {
     display: block;
     font-size: 52px;
-    color: transparent;
+    
   }
   
   
   .contenedor::after {
     position: fixed;
-    z-index:-1;
+    z-index:-2;
     top: 25%;
     left: 25%;
     width: 2em;
@@ -49,9 +49,9 @@
   
   @keyframes move {
     from {
-      transform:  scale(25) translateX(-20px);
+      transform:  scale(30) ;
     }
     to {
-      transform:  scale(25) translateX(20px);
+      transform:  scale(30) ;
     }
   }

@@ -53,7 +53,7 @@
     <div class="contenedor">
     </div>
     <?php
-    include_once("./estructura/Footer.php");
+    include_once("../estructura/Footer.php");
     ?>
     <script>
         $(document).ready(function () {
