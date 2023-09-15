@@ -17,7 +17,7 @@
     <?php
     $rutalogo = "../img/";
     include_once("../../estructura/Navbar.php");
-    include_once("../../estructura/menu/menu.php");
+    include_once("../../estructura/menu/menu_accion.php");
     ?>
 
     <main class="container-fluid cont container text-light">
