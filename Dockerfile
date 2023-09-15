@@ -13,7 +13,7 @@ EXPOSE 80
 
 RUN mv ./php.ini "$PHP_INI_DIR/php.ini"
 
-RUN docker-php-ext-install exif
+RUN docker-php-ext-install exif pdo pdo_mysql
 
 RUN chown -R www-data:www-data /var/www/html
 

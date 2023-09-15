@@ -13,12 +13,10 @@
 
 
 ## Información sobre carpetas
- **Los directorios tp1,tp2,tp3 contienen las entregas correspondientes.**
+ **Los directorios tp1,tp2,tp3, tp4 contienen las entregas correspondientes.**
  El directorio dif_versiones_tps contiene diferentes versiones no entregables realizadas por nuestros integrantes a lo largo de la semana.
 
 
 ## 🚀 Version live
-La implementación se encuentra deployeada en nube por si quieren probar las funciones:
-[Deployment](https://pwd-unco-2023-8tlc-dev.fl0.io/)
+La versión deployeada se encuentra offline de momento.
 
-**🚧 AVISO: Dado que es un entorno DEV, el servidor puede tener caidas si recargan muchas veces o si intentan realizar multiples subidas. Solo limitarse a utilizarlo a modo prueba.**

@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Persona{
     private $nroDni;
     private $apellido;
@@ -20,8 +22,8 @@ class Persona{
     
     }
 
-    public function setear($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio){
-        $this->setDni($nroDni);
+    public function cargar($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio){
+        $this->setNroDni($nroDni);
         $this->setApellido($apellido);
         $this->setNombre($nombre);
         $this->setFechaNac($fechaNac);
@@ -31,7 +33,7 @@ class Persona{
 
     //setters
 
-    public function setDni($nroDni){
+    public function setNroDni($nroDni){
         $this->nroDni = $nroDni;
 
     }
@@ -90,16 +92,16 @@ class Persona{
         return $this->mensajeOperacion;
     }
 
-    public function cargar(){
+    public function buscar(){
         $resp = false;
         $base = new BaseDatos();
-        $sql = "SELECT * FROM Persona WHERE nroDni = ".$this->getNroDni();
+        $sql = "SELECT * FROM persona WHERE nroDni = ".$this->getNroDni();
         if ($base->Iniciar()) {
             $res = $base->Ejecutar($sql);
             if($res>-1){
                 if($res>0){
                     $row = $base->Registro();
-                    $this->setear($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio']);
+                    $this->cargar($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio']);
                     
                 }
             }
@@ -124,21 +126,21 @@ class Persona{
         . $this->getDomicilio() . "')";
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
-                $this->setDni($elid);
-                $resp = true;
+                $this->setNroDni($elid);
+                $respuesta = true;
             } else {
                 $this->setMensajeOperacion("Persona->insertar: ".$base->getError());
             }
         } else {
             $this->setMensajeOperacion("Persona->insertar: ".$base->getError());
         }
-        return $resp;
+        return $respuesta;
     }
 
     public function modificar(){
         $resp = false;
-        $base=new BaseDatos();
-        $sql="UPDATE persona SET apellido='".$this->getApellido()."', nombre='".$this->getApellido()."', 
+        $base = new BaseDatos();
+        $sql="UPDATE persona SET apellido='".$this->getApellido()."', nombre='".$this->getNombre()."', 
         fechaNac='".$this->getFechaNac()."',
         telefono='".$this->getTelefono()."',
         domicilio='".$this->getDomicilio()."'  WHERE nroDni=".$this->getNroDni();
@@ -156,24 +158,24 @@ class Persona{
 
     public function eliminar(){
         $resp = false;
-        $base=new BaseDatos();
+        $base = new BaseDatos();
         $sql="DELETE FROM persona WHERE nroDni=".$this->getNroDni();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 return true;
             } else {
-                $this->setMensajeOperacion("Tabla->eliminar: ".$base->getError());
+                $this->setMensajeOperacion("Persona->eliminar: ".$base->getError());
             }
         } else {
-            $this->setMensajeOperacion("Tabla->eliminar: ".$base->getError());
+            $this->setMensajeOperacion("Persona->eliminar: ".$base->getError());
         }
         return $resp;
     }
 
     public static function listar($parametro=""){
         $arreglo = array();
-        $base=new BaseDatos();
-        $sql="SELECT * FROM persona ";
+        $base = new BaseDatos();
+        $sql = "SELECT * FROM persona ";
         if ($parametro!="") {
             $sql.='WHERE '.$parametro;
         }
@@ -182,8 +184,8 @@ class Persona{
             if($res>0){
                 
                 while ($row = $base->Registro()){
-                    $obj= new Tabla();
-                    $obj->setear($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domilicio']);
+                    $obj= new Persona();
+                    $obj->cargar($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio']);
                     array_push($arreglo, $obj);
                 }
                

@@ -1,0 +1,12 @@
+.error {
+    border: 2px solid red;
+  }
+  .success {
+    border: 2px solid green;
+  }
+
+  .error-message {
+    color: red; /* Cambia el color del mensaje de error a rojo */
+    font-size: 0.875rem; /* Ajusta el tamaño de fuente del mensaje de error */
+    
+}
