@@ -23,7 +23,7 @@ class Persona{
     }
 
     public function cargar($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio){
-        $this->setDni($nroDni);
+        $this->setNroDni($nroDni);
         $this->setApellido($apellido);
         $this->setNombre($nombre);
         $this->setFechaNac($fechaNac);
@@ -33,7 +33,7 @@ class Persona{
 
     //setters
 
-    public function setDni($nroDni){
+    public function setNroDni($nroDni){
         $this->nroDni = $nroDni;
 
     }
@@ -126,7 +126,7 @@ class Persona{
         . $this->getDomicilio() . "')";
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
-                $this->setDni($elid);
+                $this->setNroDni($elid);
                 $respuesta = true;
             } else {
                 $this->setMensajeOperacion("Persona->insertar: ".$base->getError());
@@ -140,7 +140,7 @@ class Persona{
     public function modificar(){
         $resp = false;
         $base = new BaseDatos();
-        $sql="UPDATE persona SET apellido='".$this->getApellido()."', nombre='".$this->getApellido()."', 
+        $sql="UPDATE persona SET apellido='".$this->getApellido()."', nombre='".$this->getNombre()."', 
         fechaNac='".$this->getFechaNac()."',
         telefono='".$this->getTelefono()."',
         domicilio='".$this->getDomicilio()."'  WHERE nroDni=".$this->getNroDni();

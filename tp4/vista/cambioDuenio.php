@@ -102,7 +102,6 @@
     });
 });
 </script>
-Con esta actualización, hemos agregado una verificación adicional para asegurarnos de que la patente solo contenga letras mayúsculas y espacios. Ahora, el formulario no se enviará si se ingresan letras minúsculas en el campo de patente.
 
 
 

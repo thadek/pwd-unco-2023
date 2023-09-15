@@ -49,20 +49,20 @@
     <div class="contenedor">
     </div>
     <?php
-    include_once("../estructura/Footer.php");
+    include_once("./estructura/Footer.php");
     ?>
     <script>
         $(document).ready(function () {
             $("#searchForm").submit(function (event) {
                 var patenteValue = $("#patente").val();
                 
-                // Expresión regular para validar la patente (ejemplo: AAA123)
-                var patenteRegex = /^[A-Z]{3}\d{3}$/;
+                // Expresión regular para validar la patente (ejemplo: ADC 123)
+                var patenteRegex = /^[A-Z]{3}\s\d{3}$/;
                 
                 // Verifica si el valor de la patente coincide con la expresión regular
                 if (!patenteRegex.test(patenteValue)) {
                     // Muestra un mensaje de error junto al campo de entrada
-                    $("#patenteError").text("Por favor, ingresa una patente válida (ejemplo: AAA123)");
+                    $("#patenteError").text("Por favor, ingresa una patente válida (ejemplo: ADC 123)");
                     
                     // Agrega una clase para resaltar el campo de entrada con borde rojo
                     $("#patente").addClass("error-field");
