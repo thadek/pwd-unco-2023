@@ -36,7 +36,9 @@ class AbmAuto
         $auto = $this->obtenerDatosAuto($patente);
         if (!($this->obtenerDatosAuto($patente) === null)) {
             try {
-                $auto->setDniDuenio($nuevoDniDuenio);
+                $duenio = new Persona();
+                $duenio->setNroDni($nuevoDniDuenio);
+                $auto->setDuenio($duenio);
                 $auto->modificar();
                 $salida = "Dueño del auto actualizado con éxito.";
             } catch (PDOException $e) {
@@ -59,7 +61,9 @@ class AbmAuto
                 $auto->setPatente($patente);
                 $auto->setMarca($marca);
                 $auto->setModelo($modelo);
-                $auto->setDniDuenio($dniDuenio);
+                $duenio = new Persona();
+                $duenio->setNroDni($dniDuenio);
+                $auto->setDuenio($duenio);
                 $auto->insertar();
                 $salida = "Auto registrado con éxito.";
             } catch (PDOException $e) {
@@ -84,24 +88,5 @@ class AbmAuto
     }
 
 
-    public function modificarAuto($auto)
-    {
-        $salida = "";
-        // Verifica si el auto existe en la base de datos
-        if (!($this->obtenerDatosAuto($auto->getPatente()) === null)) {
-           
-            try {
-                $auto->modificar();
-                $salida = "Auto modificado con éxito.";
-            } catch (PDOException $e) {
-                $salida = "Error al modificar el auto: " . $e->getMessage();
-            }
-
-        }else{
-            $salida = "El auto no existe en la base de datos.";
-        }
-
-        return $salida;
-        
-    }
+    
 }

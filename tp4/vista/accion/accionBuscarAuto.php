@@ -42,7 +42,9 @@
 
 
         if ($auto !== null) {
-            $duenio = $abmPersona->obtenerDatosPersona($auto->getDniDuenio());
+            
+            $duenio = $auto->getDuenio();
+            $duenio->buscar();
             $salida = <<<TABLA
             <table class="table table-dark">
             <tr><th>Patente</th><th>Marca</th><th>Modelo</th><th>Dueño</th></tr>

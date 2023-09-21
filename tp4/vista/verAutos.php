@@ -42,7 +42,8 @@
         
         // Itera a través de la lista de autos y muestra los datos
         foreach ($autos as $auto) {
-            $duenio = $abmPersona->obtenerDatosPersona($auto->getDniDuenio());
+            $duenio =  $auto->getDuenio();
+            $duenio->buscar();
             $salida.= <<<FILA
             <tr>
             <td> {$auto->getPatente()} </td>

@@ -5,22 +5,22 @@ class Auto {
     private $patente;
     private $marca;
     private $modelo;
-    private $dniDuenio;
+    private $duenio;
     private $mensajeOperacion;
 
     public function __construct(){
         $this->patente="";
         $this->marca="";
         $this->modelo="";
-        $this->dniDuenio="";
+        $this->duenio=new Persona();
         $this->mensajeOperacion ="";
     }
 
-    public function cargar($patente, $marca, $modelo, $dniDuenio){
+    public function cargar($patente, $marca, $modelo, $duenio){
         $this->setPatente($patente);
         $this->setMarca($marca);
         $this->setModelo($modelo);
-        $this->setDniDuenio($dniDuenio);
+        $this->setDuenio($duenio);
     }
 
     public function getPatente(){
@@ -47,12 +47,12 @@ class Auto {
         $this->modelo = $modelo;
     }
 
-    public function getDniDuenio(){
-        return $this->dniDuenio;
+    public function getDuenio(){
+        return $this->duenio;
     }
 
-    public function setDniDuenio($dniDuenio){
-        $this->dniDuenio = $dniDuenio;
+    public function setDuenio($duenio){
+        $this->duenio = $duenio;
     }
 
     public function getMensajeOperacion(){
@@ -72,7 +72,11 @@ class Auto {
             if($res>-1){
                 if($res>0){
                     $row = $base->Registro();
-                    $this->cargar($row['patente'], $row['marca'], $row['modelo'], $row['dniDuenio']);
+                    $duenio = new Persona();
+                    $duenio->setNroDni($row['dniDuenio']);
+                    $duenio->buscar();
+                    $this->cargar($row['patente'], $row['marca'], $row['modelo'], $duenio);
+                    $resp = true;              
                 }
             }
         } else {
@@ -86,17 +90,20 @@ class Auto {
     public function insertar(){
         $resp = false;
         $base = new BaseDatos();
-        $sql="INSERT INTO auto(patente, marca, modelo, dniDuenio)  VALUES ('".$this->getPatente()."','".$this->getMarca()."','".$this->getModelo()."','".$this->getDniDuenio()."')";
-        if ($base->Iniciar()) {
-            if ($patente = $base->Ejecutar($sql)) {
-                $this->setPatente($patente);
-                $resp = true;
+        if($this->getDuenio() != null){
+            $sql="INSERT INTO auto(patente, marca, modelo, dniDuenio)  VALUES ('".$this->getPatente()."','".$this->getMarca()."','".$this->getModelo()."','".$this->getDuenio()->getNroDni()."')";
+            if ($base->Iniciar()) {
+                if ($patente = $base->Ejecutar($sql)) {
+                    $this->setPatente($patente);
+                    $resp = true;
+                } else {
+                    $this->setMensajeoperacion("auto->insertar: ".$base->getError());
+                }
             } else {
                 $this->setMensajeoperacion("auto->insertar: ".$base->getError());
             }
-        } else {
-            $this->setMensajeoperacion("auto->insertar: ".$base->getError());
         }
+        
         return $resp;
     }
 
@@ -104,7 +111,7 @@ class Auto {
         $resp = false;
         $base = new BaseDatos();
         $sql = "UPDATE auto SET marca = '".$this->getMarca()."',modelo='".$this->getModelo()."',
-        dniDuenio='".$this->getDniDuenio()."' WHERE patente='". $this->getPatente()."'";
+        dniDuenio='".$this->getDuenio()->getNroDni()."' WHERE patente='". $this->getPatente()."'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -145,8 +152,10 @@ class Auto {
             if($res>0){
                 
                 while ($row = $base->Registro()){
-                    $obj= new auto();
-                    $obj->cargar($row['patente'], $row['marca'], $row['modelo'], $row['dniDuenio']);
+                    $obj= new Auto();
+                    $duenio = new Persona();
+                    $duenio->setNroDni($row['dniDuenio']);
+                    $obj->cargar($row['patente'], $row['marca'], $row['modelo'], $duenio);
                     array_push($arreglo, $obj);
                 }
                
