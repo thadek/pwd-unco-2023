@@ -3,7 +3,7 @@
 class Hola extends Comando{
 
     public function __construct(){
-        parent::__construct('hola', 'Saluda al usuario');
+        parent::__construct('hola', 'Saluda al usuario',null);
     }
 
     public function ejecutar($message, $params){

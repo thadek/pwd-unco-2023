@@ -14,6 +14,10 @@ use Discord\DiscordCommandClient;
 use Discord\Parts\Channel\Message;
 use Psr\Http\Message\ResponseInterface;
 use React\Http\Browser;
+use Discord\Discord;
+use Discord\Parts\Interactions\Interaction;
+use Discord\WebSockets\Event;
+use Discord\Builders\MessageBuilder;
 
 use function React\Async\coroutine;
 
@@ -72,12 +76,22 @@ foreach($comandos as $comando){
            
             include __DIR__.'/control/comandos/'.$nombre.'.php';
             //Sino instancio la clase y registro el comando
-            $clase = new $nombre();
+            $clase = new $nombre($discord);
             $discord->registerCommand($clase->getNombre(), $clase->ejecutar($message, $params));
         }
         
     }
 }
+
+
+$discord->on(Event::INTERACTION_CREATE, function (Interaction $interaction, Discord $discord) {
+
+ 
+
+    if($interaction->data->custom_id == 'push_me'){
+        $interaction->updateMessage(MessageBuilder::new()->setContent('You pushed me!'));
+    }
+});
 
 
 // Iniciar el bot

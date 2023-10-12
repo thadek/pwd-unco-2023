@@ -17,7 +17,7 @@ class Qr extends Comando
 
     public function __construct()
     {
-        parent::__construct('qr', 'Genera un codigo qr a partir del texto recibido');
+        parent::__construct('qr', 'Genera un codigo qr a partir del texto recibido',null);
     }
 
 

@@ -3,7 +3,7 @@
 class Ping extends Comando{
 
     public function __construct(){
-        parent::__construct('ping', 'Devuelve pong');
+        parent::__construct('ping', 'Devuelve pong',null);
     }
 
     public function ejecutar($message, $params){
