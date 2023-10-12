@@ -1,12 +1,7 @@
 <?php
 
-
-use UnitConverter\UnitConverter;
-
 class Conversor extends Comando {
     
-
-    //private $converter = UnitConverter::default();
 
     public function __construct()
     {
@@ -17,7 +12,10 @@ class Conversor extends Comando {
     {
         return function ($message, $params) {
             $message->channel->sendMessage('Hello World!');
+
         };
+
+        
     }
 
     
