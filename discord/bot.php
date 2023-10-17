@@ -4,6 +4,7 @@
 include __DIR__.'/vendor/autoload.php';
 include_once(__DIR__.'/control/IComando.php');
 include_once(__DIR__.'/control/Comando.php');
+include_once(__DIR__.'/control/Conversion.php');
 
 
 //Variables de entorno

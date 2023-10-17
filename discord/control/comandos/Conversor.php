@@ -1,6 +1,6 @@
 <?php
 
-include_once('Conversion.php');
+include_once('../control/Conversion.php');
 
 use UnitConverter\UnitConverter;
 
@@ -19,8 +19,16 @@ class Conversor extends Comando {
         $converter = UnitConverter::default();
         $objConversion = new Conversion($valorEntrada, $unidadEntrada, $unidadSalida);
         $verificar = $objConversion->verificarUnidades($unidadEntrada, $unidadSalida);
-        if($verificar){
-            $valorFinal = $converter->convert($valorEntrada)->from($unidadEntrada)->to($unidadSalida);
+        try {
+            $verificar = $objConversion->verificarUnidades($unidadEntrada, $unidadSalida);
+            if ($verificar) {
+                $valorFinal = $converter->convert($valorEntrada)->from($unidadEntrada)->to($unidadSalida);
+            }
+        } catch (Exception $e) {
+            // Manejo de la excepción
+            echo $e->getMessage(); // Puedes imprimir o registrar el mensaje de error
+            // También puedes lanzar la excepción nuevamente si es necesario:
+            throw $e;
         }
         return $valorFinal;
     }
@@ -43,14 +51,18 @@ class Conversor extends Comando {
                     $valorEntrada = $palabras[2];
                     $unidadEntrada = $palabras[3];
                     $unidadSalida = $palabras[4];
+                    $resultado = $this->cambioUnidad($valorEntrada, $unidadEntrada, $unidadSalida);
+                    $respuesta = $resultado . '' .  $unidadSalida;
+                }else{
+                    $respuesta = 'Error al realizar conversión';
                 }
-                try{
+                /*try{
                     $resultado = $this->cambioUnidad($valorEntrada, $unidadEntrada, $unidadSalida);
                     $respuesta = $resultado + $unidadSalida;
                 } catch (Exception $e) {
                     $respuesta = 'Error al realizar conversión';
                     echo $e;
-                }
+                }*/
             }
             $message->reply($respuesta);
             return;
