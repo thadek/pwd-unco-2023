@@ -7,14 +7,13 @@ class Conversion {
     private $valorIngresado;
     private $unidadEntrante;
     private $unidadSalida;
-    private $valorFinal;
+
     
-    public function __construct($valorIngresado, $unidadEntrante, $unidadSalida, $valorFinal)
+    public function __construct($valorIngresado, $unidadEntrante, $unidadSalida)
     {
         $this->valorIngresado = $valorIngresado;
         $this->unidadEntrante = $unidadEntrante;
         $this->unidadSalida = $unidadSalida;
-        $this->valorFinal = $valorFinal;
     }
 
     //getters
@@ -30,9 +29,6 @@ class Conversion {
         return $this->unidadSalida;
     }
 
-    public function getValorFinal(){
-        return $this->valorFinal;
-    }
 
     //setters
 
@@ -48,27 +44,34 @@ class Conversion {
         $this->unidadSalida = $unidadSalida;
     }
 
-    public function setValorFinal($valorFinal){
-        $this->valorFinal = $valorFinal;
-    }
+    public function verificarUnidades($unidadEntrada, $unidadSalida){
+        $verificar = false;
 
-    public function cambioUnidad(){
+        $unidades = [
+        't', 'kg', 'g', 'mg', 'lbs', 'oz', 'k', 'c', 'f', 
+        'km', 'm', 'dm', 'cm', 'mm', 'in', 'ft', 'yd', 'mi', 'nmi'
+        ];
 
-        $converter = UnitConverter::default();
+        $indice = 0;
+        $indice2 = 0;
+        while ($indice < count($unidades)) {
 
-        $valorIngresado = $this->getValorIngresado();
-        $unidadEntrante = $this->getUnidadEntrante();
-        $unidadSalida = $this->getUnidadSalida();
-        $valorFinal2 = 0;
+            if ($unidades[$indice] == $unidadEntrada) {
 
-        $valorFinal2 = $converter->convert($valorIngresado)->from($unidadEntrante)->to($unidadSalida);
+                while($indice2 < count($unidades)){
 
-        $this->setValorFinal($valorFinal2);
+                    if($unidades[$indice2] == $unidadSalida){
 
-        $valorFinal = $this->getValorFinal();
+                        $verificar = true;
+                    }
 
-        return $valorFinal;
-
+                    $indice2++;
+                }
+                break; // Puedes detener el bucle una vez que se haya encontrado el valor
+            }
+            $indice++;
+        }
+        return $verificar;
     }
 
 }
