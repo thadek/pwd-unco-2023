@@ -1,7 +1,5 @@
 <?php
 
-include_once('../control/Conversion.php');
-
 use UnitConverter\UnitConverter;
 
 class Conversor extends Comando {

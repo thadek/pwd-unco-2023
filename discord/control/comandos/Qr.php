@@ -54,7 +54,7 @@ class Qr extends Comando
     {
         return function ($message, $params) {
             //Obtengo el contenido del mensaje quitando el comando
-            $contenido = explode(' ', $message->content)[2];
+            $contenido = explode(' ', $message->content)[1];
             $respuesta = '';
             if (strlen($contenido) > 100) {
                 $respuesta = 'El texto es demasiado largo';
