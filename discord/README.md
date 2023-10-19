@@ -38,6 +38,7 @@ El contenido es el siguiente:
     ```
     <?php 
     putenv("DISCORD_TOKEN=nuestro-token");
+    putenv("DISCORD_PREFIX=prefijo-para-invocar-bot");
     ?>
     ```
 
@@ -52,7 +53,9 @@ El contenido es el siguiente:
 Para interactuar con el bot en discord, es necesario incluirlo en el servidor generando un link de invitación. Más info en nuestra guía detallada.
 
 Una vez realizado lo anterior, para interactuar se utiliza la sintaxis 
-`@NombreDelBot comando`
+`[prefix] comando`
+
+Para estos ejemplos utilizamos el prefix default que es @G8Bot 
 
 ### Comandos básicos
 

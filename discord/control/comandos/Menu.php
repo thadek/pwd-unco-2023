@@ -22,7 +22,8 @@ class Menu extends Comando
     public function ejecutar($message, $params)
     {
         return function ($message, $params) {
-            $select = SelectMenu::new()
+            $message->reply("Función en desarrollo");
+          /*  $select = SelectMenu::new()
                 ->addOption(Option::new('me?'))
                 ->addOption(Option::new('or me?'));
 
@@ -42,6 +43,7 @@ class Menu extends Comando
                    
                 },$this->discord);
                
+                
 
 
                 
@@ -50,7 +52,7 @@ class Menu extends Comando
                 $message->reply(MessageBuilder::new()
                 ->setContent('Hello, world!')
                 ->addComponent($select)
-                ->addComponent($actionRow));
+                ->addComponent($actionRow));*/
         };
     }
 }

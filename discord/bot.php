@@ -7,9 +7,11 @@ include_once(__DIR__.'/control/Comando.php');
 include_once(__DIR__.'/control/Conversion.php');
 
 
+
 //Variables de entorno
 require_once("env.php");
 $token = getenv('DISCORD_TOKEN');
+$prefix = getenv("DISCORD_PREFIX");
 
 use Discord\DiscordCommandClient;
 use Discord\Parts\Channel\Message;
@@ -24,7 +26,9 @@ use function React\Async\coroutine;
 
 // Creo el cliente de discord
 $discord = new DiscordCommandClient([
-    'token' => $token, 
+    'token' => $token,
+    'description'=>"Bot de discord creado a modo ejemplo para la actividad investigación librerias utiles PWD 2023 - Grupo 8",
+    'prefix' => $prefix
 ]);
 
 // Create a $browser with same loop as $discord
@@ -61,7 +65,7 @@ $discord->registerCommand('discordstatus', function (Message $message, $params) 
             $message->reply('Unable to acesss the Discord status API :(');
         }
     }, $message, $params);
-});
+},["description"=>"Consulta el estado de los servicios de discord a discordstatusAPI y devuelve el resultado"]);
 
 
 //Gestor de comandos por carpeta
@@ -78,7 +82,7 @@ foreach($comandos as $comando){
             include __DIR__.'/control/comandos/'.$nombre.'.php';
             //Sino instancio la clase y registro el comando
             $clase = new $nombre($discord);
-            $discord->registerCommand($clase->getNombre(), $clase->ejecutar($message, $params));
+            $discord->registerCommand($clase->getNombre(), $clase->ejecutar($message, $params),["description" => $clase->getDescripcion(),...$clase->getOpciones()]);
         }
         
     }

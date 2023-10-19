@@ -17,7 +17,8 @@ class Qr extends Comando
 
     public function __construct()
     {
-        parent::__construct('qr', 'Genera un codigo qr a partir del texto recibido',null);
+
+        parent::__construct('qr', 'Genera un codigo qr a partir del texto recibido',null,["usage"=>"qr url-a-convertir"]);
     }
 
 
@@ -58,7 +59,7 @@ class Qr extends Comando
             if (strlen($contenido) > 100) {
                 $respuesta = 'El texto es demasiado largo';
             } else if (strlen($contenido) < 1) {
-                $respuesta = 'No se recibio texto';
+                $respuesta = 'No se recibio texto.';
             } else {
                 $message->reply('Generando codigo QR...');
                 try {

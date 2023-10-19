@@ -10,6 +10,7 @@ require_once("env.php");
 include __DIR__.'/vendor/autoload.php';
 
 $token = getenv('DISCORD_TOKEN');
+$prefix = getenv('DISCORD_PREFIX');
 
 
 $discord = new Discord([
@@ -23,8 +24,8 @@ $discord->on('ready', function ($discord) {
 
 $discord->on(Event::MESSAGE_CREATE, function (Message $message, Discord $discord) {
 
- if($message->content == 'tasvivo'){
-     $message->reply('Aca estoy')->done(function ($message) {
+ if($message->content == 'ping'){
+     $message->reply('pong!')->done(function ($message) {
         echo "Sent message: {$message->content}", PHP_EOL;
        });
  }

@@ -5,12 +5,14 @@ abstract class Comando implements IComando{
     protected $nombre;
     protected $descripcion;
     protected $discord;
+    protected $opciones;
 
 
-    public function __construct($nombre, $descripcion,$discord) {
+    public function __construct($nombre, $descripcion,$discord, $opciones = []) {
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->discord = $discord;
+        $this->opciones = $opciones;
     }
 
     public function getNombre() {
@@ -31,6 +33,14 @@ abstract class Comando implements IComando{
 
     public function getDescripcion() {
         return $this->descripcion;
+    }
+
+    public function getOpciones(){
+        return $this->opciones;
+    }
+
+    public function setOpciones($opciones){
+        $this->opciones = $opciones;
     }
 
     public function setDescripcion($descripcion) {
