@@ -9,7 +9,7 @@ class Conversor extends Comando {
 
     public function __construct()
     {
-        parent::__construct('convertir', 'Convierte el tipo de unidad de un valor a otra unidad',null);
+        parent::__construct('convertir', 'Convierte el tipo de unidad de un valor a otra unidad',null,["usage"=>"convertir valor unidad_entrada unidad_salida"]);
     }
 
 
