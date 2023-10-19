@@ -41,16 +41,16 @@ class Conversor extends Comando {
 
             $palabras = explode(' ', $contenido);
 
-            if(count($palabras) > 6){
+            if(count($palabras) > 5){
                 $respuesta = 'El comando debe contener menos de 6 palabras';
             }else if(count($palabras) < 1){
                 $respuesta = 'No se recibio texto';
             }else{
                 $message->reply('Generando Conversion...');
-                if(count($palabras) >=5){
-                    $valorEntrada = $palabras[2];
-                    $unidadEntrada = $palabras[3];
-                    $unidadSalida = $palabras[4];
+                if(count($palabras) >= 4){
+                    $valorEntrada = $palabras[1];
+                    $unidadEntrada = $palabras[2];
+                    $unidadSalida = $palabras[3];
                     $resultado = $this->cambioUnidad($valorEntrada, $unidadEntrada, $unidadSalida);
                     $respuesta = $resultado . '' .  $unidadSalida;
                 }else{
