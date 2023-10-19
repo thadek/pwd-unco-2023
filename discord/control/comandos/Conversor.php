@@ -18,7 +18,6 @@ class Conversor extends Comando {
         $valorFinal = 0;
         $converter = UnitConverter::default();
         $objConversion = new Conversion($valorEntrada, $unidadEntrada, $unidadSalida);
-        $verificar = $objConversion->verificarUnidades($unidadEntrada, $unidadSalida);
         try {
             $verificar = $objConversion->verificarUnidades($unidadEntrada, $unidadSalida);
             if ($verificar) {
