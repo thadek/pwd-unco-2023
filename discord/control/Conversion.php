@@ -46,7 +46,7 @@ class Conversion {
         $verificar = false;
 
         $unidades = [
-        't', 'kg', 'g', 'mg', 'lbs', 'oz', 'k', 'c', 'f', 
+        't', 'kg', 'g', 'mg', 'lb', 'oz', 'k', 'c', 'f', 
         'km', 'm', 'dm', 'cm', 'mm', 'in', 'ft', 'yd', 'mi', 'nmi'
         ];
 
