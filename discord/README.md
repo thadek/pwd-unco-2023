@@ -4,7 +4,7 @@
 Bot de discord realizado para la investigación de clases/librerías útiles en PWD 2023.
 El mismo cuenta con una serie de comandos estándar definidos para este ejemplo.
 
-Para una guía mas detallada visitar este [link.](http://localhost/)
+Para una guía mas detallada visitar este [link.](https://gpamic.notion.site/Gu-a-Discord-Bot-Grupo-8-PWD-2023-749bdf3266c448e18d5489a6b5526b97?pvs=4)
 
 
 ### Requisitos
