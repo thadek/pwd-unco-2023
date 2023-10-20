@@ -20,6 +20,8 @@ class Conversor extends Comando {
             $verificar = $objConversion->verificarUnidades($unidadEntrada, $unidadSalida);
             if ($verificar) {
                 $valorFinal = $converter->convert($valorEntrada)->from($unidadEntrada)->to($unidadSalida);
+            } else {
+                $valorFinal = "Error";
             }
         } catch (Exception $e) {
             // Manejo de la excepción
@@ -49,7 +51,11 @@ class Conversor extends Comando {
                     $unidadEntrada = $palabras[2];
                     $unidadSalida = $palabras[3];
                     $resultado = $this->cambioUnidad($valorEntrada, $unidadEntrada, $unidadSalida);
-                    $respuesta = $resultado . '' .  $unidadSalida;
+                    if ($resultado == "Error"){
+                        $respuesta = "Error al realizar conversión";
+                    } else {
+                        $respuesta = $resultado . '' .  $unidadSalida;
+                    }
                 }else{
                     $respuesta = 'Error al realizar conversión';
                 }
