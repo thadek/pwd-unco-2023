@@ -12,10 +12,13 @@
 - Ferrada, Mauro
 
 
+
 ## Información sobre carpetas
  **Los directorios tp1,tp2,tp3, tp4 contienen las entregas correspondientes.**
  El directorio dif_versiones_tps contiene diferentes versiones no entregables realizadas por nuestros integrantes a lo largo de la semana.
 
+
+### ➡️ Para visitar la implementación de la actividad librerías útiles ir a la carpeta discord o hacer [click aquí](https://github.com/thadek/pwd-unco-2023/tree/master/discord)
 
 ## 🚀 Version live
 La versión deployeada se encuentra offline de momento.
