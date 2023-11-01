@@ -1,20 +1,19 @@
+<?php
+require_once('../../configuracion.php');
+require_once('../estructura/header.php');
+?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Iniciar Sesión</title>
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
-  <style>
-    h2, p {
-      color: white;
-    }
-  </style>
-</head>
+<body class="bg-dark">
+<?php
+    include_once("../estructura/menu/menu.php");
+    $rutalogo = "./img/";
+    include_once("../estructura/Navbar.php");
+?>
 <body class="bg-dark">
 
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-4">
+<div class="container mt-5 text-white cont">
+
+    <div class="col-md-4 p-3">
       <h2 class="text-center">Iniciar Sesión</h2>
       <form>
         <div class="form-group">
@@ -25,11 +24,20 @@
           <label for="contrasena">Contraseña</label>
           <input type="password" class="form-control" id="contrasena" placeholder="Ingresa tu contraseña">
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+        <button type="submit" class="btn btn-primary mt-3 btn-block">Iniciar Sesión</button>
       </form>
-    </div>
+
   </div>
 </div>
 
 </body>
+
+<div class="contenedor">
+</div>
+
+    <?php include_once("../estructura/Footer.php"); ?>
+
+</body>
+
+
 </html>

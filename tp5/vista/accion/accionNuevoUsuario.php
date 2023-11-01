@@ -25,7 +25,7 @@
                         $pass = $datos["uspass"];
 
                         $abmUsuario = new AbmUsuario();
-                        $resultado = $abmUsuario->agregarNuevoUsuario($nombreUsuario, $mail, $pass);
+                        $resultado = $abmUsuario->agregarNuevoUsuario($nombreUsuario, $pass, $mail);
 
                         echo $resultado;
                     }

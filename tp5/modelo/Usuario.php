@@ -2,7 +2,9 @@
 
 
 
-class Usuario{
+class Usuario
+    {
+
     private $idUsuario;
     private $usNombre;
     private $usPass;
@@ -105,22 +107,21 @@ class Usuario{
     public function insertar(){
 		$base = new BaseDatos();
 		$resp = false;
-		$sql = "INSERT INTO usuario(idUsuario, usNombre, usPass, usMail, usDeshabilitado)
-				VALUES (".$this->getIdUsuario().",'".$this->getUsNombre()."','".$this->getUsPass()."','".$this->getUsMail()."','".$this->getUsDeshabilitado()."')";
+		$sql = "INSERT INTO usuario(usnombre,uspass,usmail,usdeshabilitado)
+				VALUES ('".$this->getUsNombre()."','".$this->getUsPass()."','".$this->getUsMail()."','".$this->getUsDeshabilitado()."')";
+        
+
         if ($base->Iniciar()) {
-
-			if($idUsuario = $base->devuelveIDInsercion($sql)){
-
-                $this->setIdUsuario($idUsuario);
-			    $respuesta = true;
-
-			} else {
-                $this->setmensajeoperacion($base->getError());	
-			}
+    		$idUser = $base->Ejecutar($sql);
+            if($idUser>-1){
+                $this->setIdUsuario($idUser);
+			    $resp = true;
+            }
+		
         } else {
             $this->setMensajeOperacion("Usuario->insertar: ".$base->getError());
         }
-        return $respuesta;
+        return $resp;
     }
 
     public function modificar(){

@@ -56,7 +56,7 @@
 
         <div class="row row justify-content-center p-3 ">
            
-            <div class="col">
+            <div class="col-4">
                 <div class="card" style="width: 20rem;">
                     
                     <div class="card-body">
@@ -67,7 +67,7 @@
                   </div>
             </div>
 
-            <div class="col">
+            <div class="col-4">
                <div class="card" style="width: 20rem;">
                    
                    <div class="card-body">
@@ -76,6 +76,9 @@
                      <a href="./tp5" class="btn btn-primary">Ir al menu</a>
                    </div>
                  </div>
+           </div>
+
+           <div class="col-4">
            </div>
 
         </div>

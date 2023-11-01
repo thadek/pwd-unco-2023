@@ -10,13 +10,14 @@ require_once('../estructura/header.php');
     include_once("../estructura/Navbar.php");
 ?>
 
-<div class="container mt-5">
+<div class="container cont mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-6 text-center">
-      <h2>Bienvenido a nuestra aplicación</h2>
+    
+      <h2>Bienvenido al TP°5 - Autenticación</h2>
       <p>Por favor, selecciona una opción:</p>
-      <a href="iniciarsesion.php" class="btn btn-primary">Iniciar Sesión</a>
-      <a href="" class="btn btn-secondary">Registrarse</a>
+      <div class="col-md-6 text-center text-white">
+      <a href="login.php" class="btn btn-primary">Iniciar Sesión</a>
+      <a href="registrarUsuario.php" class="btn btn-secondary">Registrarse</a>
     </div>
   </div>
 </div>
@@ -24,9 +25,10 @@ require_once('../estructura/header.php');
 
 
 <div class="contenedor">
-    </div>
+</div>
+
     <?php include_once("../estructura/Footer.php"); ?>
 
-    
 </body>
 
+</html>
