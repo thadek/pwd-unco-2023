@@ -55,13 +55,12 @@ class AbmUsuario
 
 
 
-    public function agregarNuevoUsuario($idUsuario, $usNombre, $usPass, $usMail)
+    public function agregarNuevoUsuario($usNombre, $usPass, $usMail)
     {
         $salida = "";
-        if (!($this->obtenerDatosUsuario($idUsuario) !== null)) {
+        if (!($this->obtenerDatosUsuario($usNombre) !== null)) {
             try {
                 $usuario = new Usuario();
-                $usuario->setIdUsuario($idUsuario);
                 $usuario->setUsNombre($usNombre);
                 $usuario->setUsPass($usPass);
                 $usuario->setUsMail($usMail);
