@@ -127,7 +127,7 @@ class UsuarioRol {
             if($res>0){
                 
                 while ($row = $base->Registro()){
-                    $obj= new Usuario();
+                    $obj= new UsuarioRol();
                     $obj->cargar($row['idUsuario'], $row['idRol']);
                     array_push($arreglo, $obj);
                 }
