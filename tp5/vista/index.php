@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP 5</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-</head>
+<?php
+require_once('../../configuracion.php');
+require_once('../estructura/header.php');
+?>
 
 <body class="bg-dark">
+<?php
+    include_once("../estructura/menu/menu.php");
+    $rutalogo = "./img/";
+    include_once("../estructura/Navbar.php");
+?>
+
+<div class="contenedor">
+    </div>
+    <?php include_once("../estructura/Footer.php"); ?>
+
     
 </body>

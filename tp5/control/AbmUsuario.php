@@ -17,7 +17,7 @@ class AbmUsuario
     }
 
     // obtiene usuario segun idUsuario
-    public function obtenerDatosUsuario($idUsuario)
+    public static function obtenerDatosUsuario($idUsuario)
     {
         $usuarios = Usuario::listar("idUsuario = '" . $idUsuario . "' AND usDeshabilitado <> true");
         $salida = "";
@@ -75,6 +75,24 @@ class AbmUsuario
         }
         return $salida;
     }
+
+
+    public function checkPassword($idUsuario,$password){
+        $salida = "";
+        $usuario = $this::obtenerDatosUsuario($idUsuario);
+        if ($usuario !== null) {
+            if ($usuario->getUsPass() === $password) {
+                $salida = true;
+            } else {
+                $salida = false;
+            }
+        } else {
+            $salida = -1;
+        }
+        return $salida;
+    }
+
+
 
 
     

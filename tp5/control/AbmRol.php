@@ -34,7 +34,7 @@ class AbmRol
         $salida = "";
     
         // Verifica si el rol existe en la base de datos
-        $abmRol = new AbmRol();
+        $abmRol = new AbmRol(); 
         $rol = new Rol();
         $rol->cargar($idRol, $rolDescripcion);
     

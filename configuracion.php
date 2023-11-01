@@ -21,3 +21,5 @@ $INICIO = "Location:http://" . $_SERVER['HTTP_HOST'] . "/$PROYECTO/vista/login/l
 $PRINCIPAL = "Location:http://" . $_SERVER['HTTP_HOST'] . "/$PROYECTO/index.php";
 
 $_SESSION['ROOT'] = $ROOT;
+
+$page_title = "TP5 - PWD 2023";
