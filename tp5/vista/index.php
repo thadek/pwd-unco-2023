@@ -20,7 +20,7 @@
       <h2>Bienvenido a nuestra aplicación</h2>
       <p>Por favor, selecciona una opción:</p>
       <a href="iniciarsesion.php" class="btn btn-primary">Iniciar Sesión</a>
-      <a href="" class="btn btn-secondary">Registrarse</a>
+      <a href="registrarUsuario.php" class="btn btn-secondary">Registrarse</a>
     </div>
   </div>
 </div>
