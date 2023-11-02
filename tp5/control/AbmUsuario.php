@@ -19,12 +19,24 @@ class AbmUsuario
     // obtiene usuario segun idUsuario
     public static function obtenerDatosUsuario($idUsuario)
     {
-        $usuarios = Usuario::listar("idUsuario = '" . $idUsuario . "' AND usDeshabilitado <> true");
+        $usuarios = Usuario::listar("idUsuario = '" . $idUsuario . "' AND usdeshabilitado <> true");
         $salida = "";
         if (count($usuarios) > 0) {
             $salida = $usuarios[0];
         } else {
             $salida = null;
+        }
+        return $salida;
+    }
+
+    // obtiene usuario segun usNombre
+    public static function obtenerUsuarioPorNombre($usNombre){
+        $salida = "";
+        $user = Usuario::listar("usnombre = '" . $usNombre . "'");
+        if (count($user) > 0) {
+            $salida = $user[0];
+        } else {
+            $salida = -1;
         }
         return $salida;
     }
@@ -58,13 +70,20 @@ class AbmUsuario
     public function agregarNuevoUsuario($usNombre, $usPass, $usMail)
     {
         $salida = "";
-        if (!($this->obtenerDatosUsuario($usNombre) !== null)) {
+        if (!(AbmUsuario::obtenerUsuarioPorNombre($usNombre) !== null)) {
             try {
                 $usuario = new Usuario();
                 $usuario->setUsNombre($usNombre);
+                //Encripto la password?
+                
                 $usuario->setUsPass($usPass);
                 $usuario->setUsMail($usMail);
+
                 $usuario->insertar();
+                $rolUsuario = new UsuarioRol();
+                $rolUsuario->setIdUsuario($usuario->getIdUsuario());
+                $rolUsuario->setIdRol(2);
+                $rolUsuario->insertar();
                 $salida = "Usuario registrado con éxito.";
             } catch (PDOException $e) {
                 $salida = "Error al registrar el usuario: " . $e->getMessage();
@@ -76,20 +95,42 @@ class AbmUsuario
     }
 
 
-    public function checkPassword($idUsuario,$password){
-        $salida = "";
-        $usuario = $this::obtenerDatosUsuario($idUsuario);
-        if ($usuario !== null) {
-            if ($usuario->getUsPass() === $password) {
+   public static function validarLogin($usuario, $password){
+        $salida = false;
+        $usuario = AbmUsuario::obtenerUsuarioPorNombre($usuario);
+        if ($usuario !== -1) {
+            if($password == $usuario->getUsPass()){
                 $salida = true;
-            } else {
-                $salida = false;
             }
-        } else {
-            $salida = -1;
         }
         return $salida;
     }
+
+
+
+    public static function obtenerRol($idUsuario){
+        $salida = "";
+        $abmUsuarioRol = new AbmUsuarioRol();
+        $usuarioRol = $abmUsuarioRol->obtenerDatosUsuarioRol($idUsuario);
+        if ($usuarioRol !== null) {
+            $salida = $usuarioRol->getIdRol();
+        }
+        return $salida;
+    }
+
+
+    public static function obtenerNombreRol($idRol){
+        $salida = "";
+        $abmRol = new AbmRol();
+        $rol = $abmRol->obtenerDatosRol($idRol);
+        if ($rol !== null) {
+            $salida = $rol->getRolDescripcion();
+        }
+        return $salida;
+    }
+
+  
+   
 
 
 

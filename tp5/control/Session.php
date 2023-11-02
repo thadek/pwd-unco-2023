@@ -8,8 +8,8 @@ public function __construct(){
 }
 
 public function iniciar($usuario,$password){
-    
-   
+    $_SESSION['usuario'] = $usuario;
+    $_SESSION['password'] = $password;   
 }
 
 public function validar(){

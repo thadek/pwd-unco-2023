@@ -171,7 +171,7 @@ class Usuario
                 
                 while ($row = $base->Registro()){
                     $obj= new Usuario();
-                    $obj->cargar($row['idUsuario'], $row['usNombre'], $row['usPass'], $row['usMail'], $row['usDeshabilitado']);
+                    $obj->cargar($row['idUsuario'], $row['usnombre'], $row['uspass'], $row['usmail'], $row['usdeshabilitado']);
                     array_push($arreglo, $obj);
                 }
                

@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-    </head>
-    <body class="bg-dark">
-        <div class="formulario">
+<?php
+require_once('../../configuracion.php');
+require_once('../estructura/header.php');
+?>
+
+<body class="bg-dark">
+<?php
+    include_once("../estructura/menu/menu.php");
+    $rutalogo = "./img/";
+    include_once("../estructura/Navbar.php");
+?>
+
+        <div class="formulario cont">
+            <h2 class="p-3">Registrarse</h2>
             <form action="accion/accionNuevoUsuario.php"  class="d-flex flex-column gap-3" style="width:60%" method="post" id="formLogin">
             <input type="text" id="nombreUsuario" name="usnombre" placeholder="Ingrese su nombre de usuario">
             <span class="error-message"></span>
@@ -17,5 +22,11 @@
             <input class="btn btn-light p-3" type="submit" value="Registrar Usuario">
             </form>
         </div>
-    </body>
+        <div class="contenedor">
+</div>
+
+    <?php include_once("../estructura/Footer.php"); ?>
+
+</body>
+
 </html>
