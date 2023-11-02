@@ -15,7 +15,7 @@
 --
 
 CREATE TABLE `rol`(
-    `idrol` bigint(20) NOT NULL,
+    `idrol` bigint(20) AUTO_INCREMENT NOT NULL,
     `rodescripcion` varchar(50),
     PRIMARY KEY (`idrol`) 
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -25,7 +25,7 @@ CREATE TABLE `rol`(
 -- 
 
 CREATE TABLE `usuario` (
-  `idUsuario` bigInt(20) NOT NULL,
+  `idUsuario` bigInt(20) AUTO_INCREMENT NOT NULL,
   `usnombre` varchar(50) NOT NULL,
   `uspass` int(11) NOT NULL,
   `usmail` varchar(10) NOT NULL,
