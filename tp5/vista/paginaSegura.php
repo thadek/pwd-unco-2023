@@ -23,7 +23,7 @@ if(Session::activa()){
       <h2>PAGINA SEGURA</h2>
       <p> <?php 
 
-echo session_id();
+
 
       echo <<<NM
        Estas logueado como 
