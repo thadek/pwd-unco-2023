@@ -9,6 +9,8 @@
 
 $PROYECTO = 'pwd/pwd-unco-2023';
 
+$page_title = "TP5 - PWD 2023";
+
 //variable que almacena el directorio del proyecto
 $ROOT = $_SERVER['DOCUMENT_ROOT'] . "/$PROYECTO/";
 
@@ -20,6 +22,5 @@ $INICIO = "Location:http://" . $_SERVER['HTTP_HOST'] . "/$PROYECTO/vista/login/l
 // variable que define la pagina principal del proyecto (menu principal)
 $PRINCIPAL = "Location:http://" . $_SERVER['HTTP_HOST'] . "/$PROYECTO/index.php";
 
-$_SESSION['ROOT'] = $ROOT;
+$_SERVER['ROOT'] = $ROOT;
 
-$page_title = "TP5 - PWD 2023";

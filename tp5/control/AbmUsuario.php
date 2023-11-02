@@ -16,6 +16,11 @@ class AbmUsuario
         return $usuarios;
     }
 
+    public function obtenerTodosLosUsuariosYRoles(){
+
+
+
+    }
     // obtiene usuario segun idUsuario
     public static function obtenerDatosUsuario($idUsuario)
     {
@@ -70,7 +75,7 @@ class AbmUsuario
     public function agregarNuevoUsuario($usNombre, $usPass, $usMail)
     {
         $salida = "";
-        if (!(AbmUsuario::obtenerUsuarioPorNombre($usNombre) !== null)) {
+        if (AbmUsuario::obtenerUsuarioPorNombre($usNombre) === -1) {
             try {
                 $usuario = new Usuario();
                 $usuario->setUsNombre($usNombre);

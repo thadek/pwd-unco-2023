@@ -13,10 +13,17 @@ public function iniciar($usuario,$password){
 }
 
 public function validar(){
-
+    $salida = false;
+    if (isset($_SESSION['usuario']) && isset($_SESSION['password'])){
+      
+       if(AbmUsuario::validarLogin($_SESSION['usuario'],$_SESSION['password'])){
+              $salida = true;
+       };     
+    } 
+    return $salida;
 }
 
-public function activa(){
+public static function activa(){
     return PHP_SESSION_ACTIVE === session_status();
 }
 
