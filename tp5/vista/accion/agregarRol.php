@@ -15,21 +15,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    $rolModel = new AbmRol();
+    $rol= new AbmRol();
 
    
-    $stmt = $pdo->prepare("INSERT INTO roles (nombre, descripcion) VALUES (:nombre, :descripcion)");
-    $stmt->bindParam(':nombre', $nombreRol);
-    $stmt->bindParam(':descripcion', $descripcionRol);
-
+    $resultado = $rol->agregarNuevoRol($descripcionRol);
     
-    if ($stmt->execute()) {
+    if ($resultado === "Rol registrado con éxito.") {
         
        echo "el rol se agrego correctamente";
         exit();
-    } else {
+    } elseif ($resultado === "El rol ya está registrado.") {
+    
+        echo "El rol ya está registrado.";
+    }else {
         
-        echo "Error al agregar el rol. Por favor, inténtalo de nuevo.";
+        echo "Error al agregar el rol: " . $resultado;
     }
 } else {
    

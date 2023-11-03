@@ -54,13 +54,12 @@ class AbmRol
 
 
 
-    public function agregarNuevoRol($idRol, $rolDescripcion)
+    public function agregarNuevoRol($rolDescripcion)
     {
         $salida = "";
-        if (!($this->obtenerDatosRol($idRol) !== null)) {
+        if (!($this->obtenerDatosRol($rolDescripcion) !== null)) {
             try {
                 $rol = new Rol();
-                $rol->setIdRol($idRol);
                 $rol->setRolDescripcion($rolDescripcion);
                 $rol->insertar();
                 $salida = "Rol registrado con éxito.";
